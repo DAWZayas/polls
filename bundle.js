@@ -27755,7 +27755,8 @@
 	  _reactRouter.Route,
 	  { path: '/', component: _containersApp2['default'] },
 	  _react2['default'].createElement(_reactRouter.Route, { path: 'poll', component: _containersPollListContainer2['default'] }),
-	  _react2['default'].createElement(_reactRouter.Route, { path: 'poll/:index', component: _containersPollDetailsContainer2['default'] })
+	  _react2['default'].createElement(_reactRouter.Route, { path: 'poll/:index', component: _containersPollDetailsContainer2['default'] }),
+	  _react2['default'].createElement(_reactRouter.Redirect, { path: '*', to: '/' })
 	);
 	module.exports = exports['default'];
 
