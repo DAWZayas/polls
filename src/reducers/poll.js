@@ -1,4 +1,5 @@
 import { SET_POLLS, ADD_POLL } from '../actions';
+import { getId } from '../utils';
 
 function setPolls(state, polls) {
   return polls.slice();
@@ -6,7 +7,7 @@ function setPolls(state, polls) {
 
 function addPoll(state, title) {
   return state.concat({
-  	id: String(state.length),
+  	id: getId(),
   	title,
   	entries: []
   });

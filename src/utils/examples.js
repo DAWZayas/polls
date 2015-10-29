@@ -1,11 +1,13 @@
+import { getId } from './index';
+
 const POLLS = [ 
   {
-    id: '0',
+    id: getId(),
     title: 'Spanish Political Parties',
     entries: []
   },
   {
-    id: '1',
+    id: getId(),
     title: 'Programming Languages',
     entries: []
   }
