@@ -5,7 +5,7 @@ import pollReducer from '../../src/reducers/poll';
 import reducer from '../../src/reducers';
 import polls from '../../src/utils/examples';
 
-describe('poll tests', () => {
+export default describe('poll tests', () => {
 
   describe('setPolls', () => {
 

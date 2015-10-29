@@ -10,7 +10,7 @@ import { addPoll } from '../../../src/actions';
 
 const {renderIntoDocument, scryRenderedDOMComponentsWithClass, findRenderedDOMComponentWithTag, Simulate}  = TestUtils;
 
-describe('PollList', () => {
+describe('PollList tests', () => {
 
   it('renders default empty polls prop into PollList component', () => {
 
