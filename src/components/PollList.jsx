@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import PollItem from './PollItem';
+import { Link } from 'react-router';
 
 export default class PollList extends Component {
 
@@ -22,10 +23,10 @@ export default class PollList extends Component {
     return (
       <div className="row">
         <div className="col-lg-6">
-          <h1>Poll Title</h1>
+          <h3>Poll Title</h3>
           <ul className="list-group">
             {
-              polls.map( (poll, index) => <PollItem key={index} poll={poll}>{poll.title}</PollItem> )
+              polls.map( (poll, index) => <PollItem key={index} poll={poll}><Link to={`/poll/${index}`}>{poll.title}</Link></PollItem> )
             }
          </ul>
           <div className="input-group">

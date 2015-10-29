@@ -8,8 +8,7 @@ function setPolls(state, polls) {
 function addPoll(state, title) {
   return state.concat({
   	id: getId(),
-  	title,
-  	entries: []
+  	title
   });
 }
 

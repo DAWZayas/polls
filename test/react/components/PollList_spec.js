@@ -5,8 +5,6 @@ import {expect} from 'chai';
 
 import PollList from '../../../src/components/PollList';
 import polls from '../../../src/utils/examples';
-import init from '../../../src/utils/init';
-import { addPoll } from '../../../src/actions';
 
 const {renderIntoDocument, scryRenderedDOMComponentsWithClass, findRenderedDOMComponentWithTag, Simulate}  = TestUtils;
 
@@ -70,29 +68,6 @@ it('should obtain the poll title when add poll button is clicked', () => {
     Simulate.click(addPullButton);
     
     expect(obtainedTitle).to.equal(expectedTitle);
-  });
-
-  it('should add the poll title to the store when add poll button is clicked', () => {
-    
-    const store = init();
-    const initPolls = store.getState().polls;
-    const expectedTitle = 'TV Series';
-
-    const component = renderIntoDocument(
-      <PollList polls={polls} onAddPullClick={ title => store.dispatch(addPoll(title)) }/>
-    );
-
-    ReactDOM.findDOMNode(component.refs.title).value = expectedTitle;
-
-    const addPullButton = findRenderedDOMComponentWithTag(component, 'button');
-    
-    Simulate.click(addPullButton);
-
-    const actualPolls = store.getState().polls;
-
-    expect(initPolls.length).to.equal(actualPolls.length - 1, 'polls should inc by 1');
-    expect(actualPolls[initPolls.length].title).to.equal(expectedTitle, 'The poll is added to the end');
-    expect(actualPolls[initPolls.length].entries).to.be.empty;
   });
 
 });

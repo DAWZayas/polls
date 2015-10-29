@@ -5,7 +5,7 @@ import pollReducer from '../../src/reducers/poll';
 import reducer from '../../src/reducers';
 import polls from '../../src/utils/examples';
 
-export default describe('poll tests', () => {
+describe('reducer poll tests', () => {
 
   describe('setPolls', () => {
 
@@ -16,7 +16,7 @@ export default describe('poll tests', () => {
 
     it('sets polls to the state using app reducer', () => {
       const nextState = reducer(undefined, setPolls(polls));
-      expect(nextState).to.eql({ polls });
+      expect(nextState.polls).to.eql(polls);
     });
 
   });
@@ -27,14 +27,12 @@ export default describe('poll tests', () => {
       const nextState = pollReducer(undefined, addPoll('TV Series'));
       expect(nextState.length).to.equal(1);
       expect(nextState[0].title).to.equal('TV Series');
-      expect(nextState[0].entries).to.be.empty;
     });
 
     it('should add a poll to a non empty polls state', () => {
       const nextState = pollReducer(polls, addPoll('TV Series'));
       expect(nextState.length).to.equal(polls.length + 1);
       expect(nextState[polls.length].title).to.equal('TV Series');
-      expect(nextState[polls.length].entries).to.be.empty;
     });
 
   });

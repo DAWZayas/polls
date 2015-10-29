@@ -3,13 +3,11 @@ import { getId } from './index';
 const POLLS = [ 
   {
     id: getId(),
-    title: 'Spanish Political Parties',
-    entries: []
+    title: 'Spanish Political Parties'
   },
   {
     id: getId(),
-    title: 'Programming Languages',
-    entries: []
+    title: 'Programming Languages'
   }
 ];
 

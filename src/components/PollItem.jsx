@@ -9,5 +9,5 @@ export default class PollItem extends Component {
 }
 
 PollItem.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.element.isRequired,
 };
