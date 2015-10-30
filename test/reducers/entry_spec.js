@@ -2,7 +2,7 @@ import {expect} from 'chai';
 
 import { addEntry }  from '../../src/actions';
 import entryReducer from '../../src/reducers/entry';
-import polls, { entries } from '../../src/utils/examples';
+import { polls } from '../../src/utils/examples';
 
 describe('reducer entry tests', () => {
 

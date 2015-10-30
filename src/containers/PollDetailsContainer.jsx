@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PollDetails from '../components/PollDetails';
 import EntryList from '../components/EntryList';
 
-import { addEntry } from '../actions';
+import { addEntry, removeEntry } from '../actions';
 
 class PollDetailsContainer extends Component {
 
@@ -30,7 +30,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-  	onAddEntryClick: (idPoll, title) => dispatch(addEntry(idPoll, title))
+  	onAddEntryClick: (idPoll, title) => dispatch(addEntry(idPoll, title)),
+    onRemoveEntryClick: (idEntry) => dispatch(removeEntry(idEntry))
   };
 }
 

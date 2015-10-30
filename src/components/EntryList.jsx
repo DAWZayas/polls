@@ -14,8 +14,11 @@ export default class EntryList extends Component {
     node.value = '';
   }
 
-  render() {
+  handleRemoveButtonClick(idEntry) {
+    this.props.onRemoveEntryClick(idEntry);
+  }
 
+  render() {
     const { entries } = this.props;
 
     return (
@@ -24,7 +27,7 @@ export default class EntryList extends Component {
           <h3>Entry Title</h3>
           <ul className="list-group">
             {
-              entries.map( (entry, index) => <li key={index}>{entry.title}</li> )
+              entries.map( (entry, index) => <li key={index}>{entry.title}<button onClick={() => this.handleRemoveButtonClick(entry.id)} className="btn btn-warning">Remove</button></li> )
             }
          </ul>
           <div className="input-group">
@@ -42,7 +45,8 @@ export default class EntryList extends Component {
 EntryList.propTypes = {
   poll: PropTypes.object.isRequired,
   entries: PropTypes.array,
-  onAddEntryClick: PropTypes.func.isRequired
+  onAddEntryClick: PropTypes.func.isRequired,
+  onRemoveEntryClick: PropTypes.func.isRequired
 };
 
 EntryList.defaultProps = { 

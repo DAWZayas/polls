@@ -4,7 +4,7 @@ import TestUtils from 'react-addons-test-utils';
 import {expect} from 'chai';
 
 import PollList from '../../../src/components/PollList';
-import polls from '../../../src/utils/examples';
+import { polls } from '../../../src/utils/examples';
 
 const {renderIntoDocument, scryRenderedDOMComponentsWithClass, findRenderedDOMComponentWithTag, Simulate}  = TestUtils;
 

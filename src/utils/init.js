@@ -1,10 +1,8 @@
-import { setPolls }  from '../actions';
 import configureStore from '../store';
-import polls from './examples';
+import { initialState } from './examples';
 
 
 export default function init() {
-  const store = configureStore();
-  store.dispatch(setPolls(polls));
+  const store = configureStore(initialState);
   return store;
 }

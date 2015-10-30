@@ -3,7 +3,7 @@ import {expect} from 'chai';
 import { setPolls, addPoll }  from '../../src/actions';
 import pollReducer from '../../src/reducers/poll';
 import reducer from '../../src/reducers';
-import polls from '../../src/utils/examples';
+import { polls } from '../../src/utils/examples';
 
 describe('reducer poll tests', () => {
 
