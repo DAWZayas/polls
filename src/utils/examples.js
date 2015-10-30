@@ -12,3 +12,10 @@ const POLLS = [
 ];
 
 export default POLLS;
+
+export const entries = {
+	[getId()]: {
+		idPoll: POLLS[1].id,
+		title: 'Java'	
+	}
+};

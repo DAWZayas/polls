@@ -10,11 +10,13 @@ export default class PollDetails extends Component {
   render() {
   	const { poll } = this.props;
     return (
-      <h3>In { poll.title }</h3>
+      <div>
+      	<h3>In { poll.title }</h3>
+      </div>
     );
   }
 }
 
 PollDetails.propTypes = {
-  poll: PropTypes.object.isRequired  	
+  poll: PropTypes.object.isRequired
  };

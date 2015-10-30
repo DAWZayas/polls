@@ -1,19 +1,40 @@
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import PollDetails from '../components/PollDetails';
+import EntryList from '../components/EntryList';
 
-function mapStateToProps(state) {
-  return {
-  	poll: state.polls[state.router.params.index]
-  };
+import { addEntry } from '../actions';
+
+class PollDetailsContainer extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+  	return (
+  		<div>
+  			<PollDetails { ...this.props } />
+  			<EntryList { ...this.props }/>
+  		</div>
+  	);
+  }	
 }
 
-function mapActionsToProps() {
+function mapStateToProps(state) {
+  const poll = state.polls[state.router.params.index];
+  const entries = Object.values(state.entries).filter( entry =>  entry.idPoll === poll.id );
+  return { poll, entries };
+}
+
+function mapDispatchToProps(dispatch) {
   return {
+  	onAddEntryClick: (idPoll, title) => dispatch(addEntry(idPoll, title))
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapActionsToProps
-)(PollDetails);
+  mapDispatchToProps
+)(PollDetailsContainer);
