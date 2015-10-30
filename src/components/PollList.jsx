@@ -16,6 +16,10 @@ export default class PollList extends Component {
     node.value = '';
   }
 
+  handleRemoveButtonClick(idPoll) {
+    this.props.onRemovePollClick(idPoll);
+  }
+
   render() {
 
     const { polls } = this.props;
@@ -26,7 +30,13 @@ export default class PollList extends Component {
           <h3>Poll Title</h3>
           <ul className="list-group">
             {
-              polls.map( (poll, index) => <PollItem key={index} poll={poll}><Link to={`/poll/${index}`}>{poll.title}</Link></PollItem> )
+              polls.map( (poll, index) =>
+                <PollItem key={index} poll={poll}>
+                  <div>
+                    <Link to={`/poll/${index}`}>{poll.title}</Link>
+                    <button onClick={() => this.handleRemoveButtonClick(poll.id)} className="btn btn-warning">Remove</button>
+                  </div>
+                </PollItem> )
             }
          </ul>
           <div className="input-group">
@@ -43,7 +53,8 @@ export default class PollList extends Component {
 
 PollList.propTypes = {
   polls: PropTypes.array,
-  onAddPullClick: PropTypes.func.isRequired
+  onAddPullClick: PropTypes.func.isRequired,
+  onRemovePollClick: PropTypes.func.isRequired
 };
 
 PollList.defaultProps = { 

@@ -3,6 +3,7 @@
  */
 export const SET_POLLS = 'SET_POLLS';
 export const ADD_POLL = 'ADD_POLL';
+export const REMOVE_POLL = 'REMOVE_POLL';
 
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
@@ -23,6 +24,10 @@ export function setPolls(polls) {
 
 export function addPoll(title) {
   return { type: ADD_POLL, title };
+}
+
+export function removePoll(idPoll) {
+  return { type: REMOVE_POLL, idPoll };
 }
 
 export function addEntry(idPoll, title) {
