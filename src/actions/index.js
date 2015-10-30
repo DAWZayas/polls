@@ -1,3 +1,5 @@
+import { pushState } from 'redux-router';
+
 /*
  * action types
  */
@@ -27,7 +29,14 @@ export function addPoll(title) {
 }
 
 export function removePoll(idPoll) {
-  return { type: REMOVE_POLL, idPoll };
+  return { type: REMOVE_POLL, idPoll, redirect: '/' };
+}
+
+export function removePollAndNavigate(idPoll) {
+  return function(dispatch) {
+    dispatch(removePoll(idPoll));
+    dispatch(pushState(null, '/poll'));
+  };
 }
 
 export function addEntry(idPoll, title) {

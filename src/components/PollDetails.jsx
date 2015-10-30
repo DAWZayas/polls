@@ -6,17 +6,22 @@ export default class PollDetails extends Component {
     super(props);
   }
 
+  handleRemoveButtonClick(idPoll) {
+    this.props.onRemovePollClick(idPoll);
+  }
 
   render() {
   	const { poll } = this.props;
     return (
       <div>
       	<h3>In { poll.title }</h3>
+        <button onClick={() => this.handleRemoveButtonClick(poll.id)} className="btn btn-warning">Remove</button>
       </div>
     );
   }
 }
 
 PollDetails.propTypes = {
-  poll: PropTypes.object.isRequired
+  poll: PropTypes.object.isRequired,
+  onRemovePollClick: PropTypes.func.isRequired
  };

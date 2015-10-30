@@ -7,7 +7,7 @@ import PollDetailsContainer from './containers/PollDetailsContainer';
 export default (
   <Route path="/" component={App}>
   	<Route path="poll" component={PollListContainer} />
-    <Route path="poll/:index" component={PollDetailsContainer} />
+    <Route path="poll/:idPoll" component={PollDetailsContainer} />
     <Redirect path="*" to="/" />
   </Route>
 );

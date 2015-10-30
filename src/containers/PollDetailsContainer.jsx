@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PollDetails from '../components/PollDetails';
 import EntryList from '../components/EntryList';
 
-import { addEntry, removeEntry } from '../actions';
+import { addEntry, removeEntry, removePollAndNavigate } from '../actions';
 
 class PollDetailsContainer extends Component {
 
@@ -23,7 +23,8 @@ class PollDetailsContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const poll = state.polls[state.router.params.index];
+  const idPoll = state.router.params.idPoll;
+  const poll = state.polls.filter( poll => idPoll === poll.id)[0] || {};
   const entries = Object.values(state.entries).filter( entry =>  entry.idPoll === poll.id );
   return { poll, entries };
 }
@@ -31,7 +32,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
   	onAddEntryClick: (idPoll, title) => dispatch(addEntry(idPoll, title)),
-    onRemoveEntryClick: (idEntry) => dispatch(removeEntry(idEntry))
+    onRemoveEntryClick: (idEntry) => dispatch(removeEntry(idEntry)),
+    onRemovePollClick: (idPoll) => dispatch(removePollAndNavigate(idPoll))
   };
 }
 

@@ -33,7 +33,7 @@ export default class PollList extends Component {
               polls.map( (poll, index) =>
                 <PollItem key={index} poll={poll}>
                   <div>
-                    <Link to={`/poll/${index}`}>{poll.title}</Link>
+                    <Link to={`/poll/${poll.id}`}>{poll.title}</Link>
                     <button onClick={() => this.handleRemoveButtonClick(poll.id)} className="btn btn-warning">Remove</button>
                   </div>
                 </PollItem> )
