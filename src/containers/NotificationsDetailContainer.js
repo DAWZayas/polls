@@ -5,7 +5,7 @@ import NotificationsDetail from '../components/NotificationsDetail';
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages
+    messages: state.messages.slice().reverse()
   };
 }
 

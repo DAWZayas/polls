@@ -10,12 +10,13 @@ function addNotification(state, action) {
         text: action.type,
         level: action.notify.level,
         created: new Date,
-        readed: false
+        pending: true,
+        isNew: true
       }) : state;
 }
 
 function setAsReaded(state, path) {
-  return path !== '/notifications' ? state : state.map( message => Object.assign({}, message, {readed: true}));
+  return path !== '/notifications' ? state : state.map( message => Object.assign({}, message, message.pending ? {pending: false} : {isNew: false}));
 }
 
 export default function notifyReducer(state = [], action) {
