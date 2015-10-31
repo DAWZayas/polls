@@ -8,19 +8,21 @@ export default class Notifications extends Component {
   }
 
   render() {
-    const { messages } = this.props;
+    const { pending, total } = this.props;
     return (
       <div>
-        <Link to="/notifications">Messages <span className="badge">{messages.length}</span></Link>
+        <Link to="/notifications">Messages <span className="badge">{total === 0 ? 0 : `${pending}/${total}`}</span></Link>
       </div>
     );
   }
 }
 
 Notifications.propTypes = {
-  messages: PropTypes.array
+  total: PropTypes.number,
+  pending: PropTypes.number
 };
 
 Notifications.defaultProps = { 
-  messages: []
+  total: 0,
+  pending: 0
 };

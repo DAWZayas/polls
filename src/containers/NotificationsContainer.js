@@ -4,7 +4,8 @@ import Notifications from '../components/Notifications';
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages
+    total: state.messages.length,
+    pending: state.messages.filter( message => !message.readed ).length
   };
 }
 
