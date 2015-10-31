@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import NotificationsContainer from './NotificationsContainer';
 
 export default class App extends Component {
 
@@ -18,6 +19,9 @@ export default class App extends Component {
   	    	<div className="col-lg-1">
   	    		<Link to="/">Hide Polls</Link>
   	    	</div>
+          <div className="col-lg-1">
+            <NotificationsContainer />
+          </div>
   	    </div>
   	    {this.props.children}
       </div>

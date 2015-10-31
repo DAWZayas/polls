@@ -10,26 +10,39 @@ export const REMOVE_POLL = 'REMOVE_POLL';
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
 
+export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
+
 /*
  * other constants
  */
 
-
+export const NotifyLevels = {
+	DEBUG: 'DEBUG',
+	INFO: 'INFO',
+	WARNING: 'WARNING',
+	ERROR: 'ERROR'
+};
 
 /*
- * action creators
+ * Poll action creators
  */
 
 export function setPolls(polls) {
-  return { type: SET_POLLS, polls };
+  return { type: SET_POLLS, polls, notify: {
+  	level: NotifyLevels.INFO
+  } };
 }
 
 export function addPoll(title) {
-  return { type: ADD_POLL, title };
+  return { type: ADD_POLL, title, notify: {
+  	level: NotifyLevels.INFO
+  } };
 }
 
 export function removePoll(idPoll) {
-  return { type: REMOVE_POLL, idPoll, redirect: '/' };
+  return { type: REMOVE_POLL, idPoll, redirect: '/', notify: {
+  	level: NotifyLevels.INFO
+  } };
 }
 
 export function removePollAndNavigate(idPoll) {
@@ -39,10 +52,26 @@ export function removePollAndNavigate(idPoll) {
   };
 }
 
+/*
+ * Entry action creators
+ */
+
 export function addEntry(idPoll, title) {
-  return { type: ADD_ENTRY, idPoll, title };
+  return { type: ADD_ENTRY, idPoll, title, notify: {
+  	level: NotifyLevels.INFO
+  } };
 }
 
 export function removeEntry(idEntry) {
-  return { type: REMOVE_ENTRY, idEntry };
+  return { type: REMOVE_ENTRY, idEntry, notify: {
+  	level: NotifyLevels.INFO
+  } };
+}
+
+/*
+ * Notification action creators
+ */
+
+export function removeNotification(index) {
+  return { type: REMOVE_NOTIFICATION, index };
 }
