@@ -60,8 +60,7 @@ export function removePoll(idPoll, titlePoll) {
 
 export function removePollAndNavigate(idPoll, title) {
   return function(dispatch) {
-    dispatch(removePoll(idPoll, title));
-    dispatch(pushState(null, '/poll'));
+    dispatch(removePoll(idPoll, title)).then(() => dispatch(pushState(null, '/poll')));
   };
 }
 
@@ -107,6 +106,7 @@ function removeActionConfirmation(pendingAction) {
 
 export function cancelAction(pendingAction) {
   return function(dispatch) {
+    pendingAction.meta.confirm.reject(pendingAction);
     dispatch(removeActionConfirmation(pendingAction));
   };
 }
@@ -114,6 +114,7 @@ export function cancelAction(pendingAction) {
 export function confirmAction(pendingAction) {
   return function(dispatch) {
     dispatch(removeActionConfirmation(pendingAction));
-    dispatch(pendingAction); 	
+    dispatch(pendingAction);
+    pendingAction.meta.confirm.resolve(pendingAction);
   };
 }
