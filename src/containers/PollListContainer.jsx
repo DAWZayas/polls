@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import PollList from '../components/PollList';
-import { addPoll, removePoll } from '../actions';
+import { addPoll, removePoll as removePoll } from '../actions';
 
 function mapStateToProps(state) {
   return {
@@ -12,7 +12,7 @@ function mapStateToProps(state) {
 function mapActionsToProps(dispatch) {
   return {
     onAddPullClick: title => dispatch(addPoll(title)),
-    onRemovePollClick: (idPoll, title) => dispatch(removePoll(idPoll, title))
+    onRemovePollClick: (idPoll, title) => dispatch(removePoll(idPoll, title)).catch(_ => _)
   };
 }
 

@@ -4,14 +4,12 @@ const confirm = store => next => action => {
   if (!action.meta || !action.meta.confirm || !action.meta.confirm.pending) {
   	return next(action);
   }
-  
+  const actionConfirm = createActionConfirmation(action);
   const promise = new Promise(function (resolve, reject) {
-  	const actionConfirm = createActionConfirmation(action);
   	action.meta.confirm.resolve = resolve;
   	action.meta.confirm.reject = reject;
-	  store.dispatch(actionConfirm);
   });
-
+  store.dispatch(actionConfirm);
   return promise;
 };
 

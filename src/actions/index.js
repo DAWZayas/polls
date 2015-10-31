@@ -1,4 +1,5 @@
 import { pushState } from 'redux-router';
+import sequencer from './sequencer';
 
 /*
  * action types
@@ -52,16 +53,17 @@ export function removePoll(idPoll, titlePoll) {
   	  notify: { level: NotifyLevels.INFO },
   	  confirm: {
   	  	pending: true,
-  		msg: `Are you sure you want to remove the "${titlePoll}" poll?`
+  		  msg: `Are you sure you want to remove the "${titlePoll}" poll?`
       }
   	}
   };
 }
 
 export function removePollAndNavigate(idPoll, title) {
-  return function(dispatch) {
-    dispatch(removePoll(idPoll, title)).then(() => dispatch(pushState(null, '/poll')));
-  };
+  return dispatch => sequencer([
+      () => dispatch(removePoll(idPoll, title)),
+      () => dispatch(pushState(null, '/poll'))
+    ]);
 }
 
 /*
@@ -105,16 +107,16 @@ function removeActionConfirmation(pendingAction) {
 }
 
 export function cancelAction(pendingAction) {
-  return function(dispatch) {
-    pendingAction.meta.confirm.reject(pendingAction);
-    dispatch(removeActionConfirmation(pendingAction));
-  };
+  return dispatch => sequencer([
+      () => pendingAction.meta.confirm.reject(pendingAction),
+      () => dispatch(removeActionConfirmation(pendingAction))
+    ]);
 }
 
 export function confirmAction(pendingAction) {
-  return function(dispatch) {
-    dispatch(removeActionConfirmation(pendingAction));
-    dispatch(pendingAction);
-    pendingAction.meta.confirm.resolve(pendingAction);
-  };
+  return dispatch => sequencer([
+      () => dispatch(removeActionConfirmation(pendingAction)),
+      () => dispatch(pendingAction),
+      () => pendingAction.meta.confirm.resolve(pendingAction)
+    ]);
 }

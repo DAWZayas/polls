@@ -18,19 +18,19 @@ export default class ConfirmDialog extends Component {
   }
 
   render() {
-
     const { isOpen, msg } = this.props;
+    
     return (
-      <Modal isOpen={isOpen} onRequestHide={() => this.handleCancelClick()}>
+      <Modal isOpen={isOpen} onRequestHide={() => this.handleCancelClick()} backdrop keyboard>
         <div className="modal-header">
-          <ModalClose/>
+          <ModalClose onClick={() => this.handleCancelClick()}/>
           <h4 className="modal-title">Confirm Dialog</h4>
         </div>
         <div className="modal-body">
           <p>{msg}</p>
         </div>
         <div className="modal-footer">
-          <button className="btn btn-default" onClick={() => this.handleCancelClick()}>
+          <button className="btn btn-default" ref="cancelButton" onClick={() => this.handleCancelClick()}>
             Cancel
           </button>
           <button className="btn btn-danger" onClick={() => this.handleConfirmClick()}>
