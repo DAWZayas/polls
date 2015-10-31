@@ -6,9 +6,9 @@ function removeNotification(state, action) {
 }
 
 function addNotification(state, action) {
-  return action.notify ? state.concat({
+  return action.meta && action.meta.notify ? state.concat({
         text: action.type,
-        level: action.notify.level,
+        level: action.meta.notify.level,
         created: new Date,
         pending: true,
         isNew: true

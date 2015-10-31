@@ -28,21 +28,27 @@ export const NotifyLevels = {
  */
 
 export function setPolls(polls) {
-  return { type: SET_POLLS, polls, notify: {
-  	level: NotifyLevels.INFO
-  } };
+  return { type: SET_POLLS, polls, 
+  	meta: {
+  		notify: { level: NotifyLevels.INFO }
+  	}
+  };
 }
 
 export function addPoll(title) {
-  return { type: ADD_POLL, title, notify: {
-  	level: NotifyLevels.INFO
-  } };
+  return { type: ADD_POLL, title, 
+  	meta: {
+  		notify: { level: NotifyLevels.INFO }
+  	}
+  };
 }
 
 export function removePoll(idPoll) {
-  return { type: REMOVE_POLL, idPoll, redirect: '/', notify: {
-  	level: NotifyLevels.INFO
-  } };
+  return { type: REMOVE_POLL, idPoll, redirect: '/', 
+  	meta: {
+  		notify: { level: NotifyLevels.INFO }
+  	}
+  };
 }
 
 export function removePollAndNavigate(idPoll) {
@@ -57,15 +63,19 @@ export function removePollAndNavigate(idPoll) {
  */
 
 export function addEntry(idPoll, title) {
-  return { type: ADD_ENTRY, idPoll, title, notify: {
-  	level: NotifyLevels.INFO
-  } };
+  return { type: ADD_ENTRY, idPoll, title, 
+  	meta: {
+  		notify: { level: NotifyLevels.INFO }
+  	}
+  };
 }
 
 export function removeEntry(idEntry) {
-  return { type: REMOVE_ENTRY, idEntry, notify: {
-  	level: NotifyLevels.INFO
-  } };
+  return { type: REMOVE_ENTRY, idEntry, 
+  	meta: {
+  		notify: { level: NotifyLevels.INFO }
+  	}
+  };
 }
 
 /*
