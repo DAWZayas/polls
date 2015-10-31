@@ -16,8 +16,8 @@ export default class PollList extends Component {
     node.value = '';
   }
 
-  handleRemoveButtonClick(idPoll) {
-    this.props.onRemovePollClick(idPoll);
+  handleRemoveButtonClick(idPoll, titlePoll) {
+    this.props.onRemovePollClick(idPoll, titlePoll);
   }
 
   render() {
@@ -34,7 +34,7 @@ export default class PollList extends Component {
                 <PollItem key={index} poll={poll}>
                   <div>
                     <Link to={`/poll/${poll.id}`}>{poll.title}</Link>
-                    <button onClick={() => this.handleRemoveButtonClick(poll.id)} className="btn btn-warning">Remove</button>
+                    <button onClick={() => this.handleRemoveButtonClick(poll.id, poll.title)} className="btn btn-warning">Remove</button>
                   </div>
                 </PollItem> )
             }

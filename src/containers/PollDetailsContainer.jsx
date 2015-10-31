@@ -33,7 +33,7 @@ function mapDispatchToProps(dispatch) {
   return {
   	onAddEntryClick: (idPoll, title) => dispatch(addEntry(idPoll, title)),
     onRemoveEntryClick: (idEntry) => dispatch(removeEntry(idEntry)),
-    onRemovePollClick: (idPoll) => dispatch(removePollAndNavigate(idPoll))
+    onRemovePollClick: (idPoll, title) => dispatch(removePollAndNavigate(idPoll, title))
   };
 }
 

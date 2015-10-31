@@ -12,6 +12,9 @@ export const REMOVE_ENTRY = 'REMOVE_ENTRY';
 
 export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
 
+export const CREATE_ACTION_CONFIRMATION = 'CREATE_ACTION_CONFIRMATION';
+export const REMOVE_ACTION_CONFIRMATION = 'REMOVE_ACTION_CONFIRMATION';
+
 /*
  * other constants
  */
@@ -30,7 +33,7 @@ export const NotifyLevels = {
 export function setPolls(polls) {
   return { type: SET_POLLS, polls, 
   	meta: {
-  		notify: { level: NotifyLevels.INFO }
+  	  notify: { level: NotifyLevels.INFO }
   	}
   };
 }
@@ -38,22 +41,26 @@ export function setPolls(polls) {
 export function addPoll(title) {
   return { type: ADD_POLL, title, 
   	meta: {
-  		notify: { level: NotifyLevels.INFO }
+  	  notify: { level: NotifyLevels.INFO }
   	}
   };
 }
 
-export function removePoll(idPoll) {
+export function removePoll(idPoll, titlePoll) {
   return { type: REMOVE_POLL, idPoll, redirect: '/', 
   	meta: {
-  		notify: { level: NotifyLevels.INFO }
+  	  notify: { level: NotifyLevels.INFO },
+  	  confirm: {
+  	  	pending: true,
+  		msg: `Are you sure you want to remove the "${titlePoll}" poll?`
+      }
   	}
   };
 }
 
-export function removePollAndNavigate(idPoll) {
+export function removePollAndNavigate(idPoll, title) {
   return function(dispatch) {
-    dispatch(removePoll(idPoll));
+    dispatch(removePoll(idPoll, title));
     dispatch(pushState(null, '/poll'));
   };
 }
@@ -84,4 +91,29 @@ export function removeEntry(idEntry) {
 
 export function removeNotification(index) {
   return { type: REMOVE_NOTIFICATION, index };
+}
+
+/*
+ * Confirm action creators
+ */
+
+export function createActionConfirmation(pendingAction) {
+  return { type: CREATE_ACTION_CONFIRMATION, pendingAction };
+}
+
+function removeActionConfirmation(pendingAction) {
+  return { type: REMOVE_ACTION_CONFIRMATION, pendingAction };
+}
+
+export function cancelAction(pendingAction) {
+  return function(dispatch) {
+    dispatch(removeActionConfirmation(pendingAction));
+  };
+}
+
+export function confirmAction(pendingAction) {
+  return function(dispatch) {
+    dispatch(removeActionConfirmation(pendingAction));
+    dispatch(pendingAction); 	
+  };
 }

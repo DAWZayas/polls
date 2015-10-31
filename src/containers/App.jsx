@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import NotificationsContainer from './NotificationsContainer';
+import ConfirmDialogContainer from './ConfirmDialogContainer';
 
 export default class App extends Component {
 
@@ -22,6 +23,9 @@ export default class App extends Component {
           <div className="col-lg-1">
             <NotificationsContainer />
           </div>
+          <div>
+            <ConfirmDialogContainer/>
+          </div>
   	    </div>
   	    {this.props.children}
       </div>
@@ -30,6 +34,6 @@ export default class App extends Component {
 }
 
 App.propTypes = {
-  // Injected by React Router
+  // Injected by React RouterConfirmDialog
   children: PropTypes.node
 };
