@@ -11,6 +11,7 @@ export const SELECT_POLL = 'SELECT_POLL';
 
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
+export const EDIT_POLL_TITLE = 'EDIT_POLL_TITLE';
 
 export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
 
@@ -69,6 +70,14 @@ export function removePollAndNavigate(idPoll, title) {
 
 export function selectPoll(idPoll) {
   return { type: SELECT_POLL, idPoll };
+}
+
+export function editPollTitle(idPoll, title) {
+  return { type: EDIT_POLL_TITLE, idPoll, title, 
+    meta: {
+      notify: { level: NotifyLevels.INFO }
+    }
+  };
 }
 
 /*

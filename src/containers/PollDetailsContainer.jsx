@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PollDetails from '../components/PollDetails';
 import EntryList from '../components/EntryList';
 
-import { addEntry, removeEntry, removePollAndNavigate } from '../actions';
+import { addEntry, removeEntry, removePollAndNavigate, editPollTitle } from '../actions';
 
 class PollDetailsContainer extends Component {
 
@@ -14,10 +14,14 @@ class PollDetailsContainer extends Component {
 
   render() {
   	return (
-  		<div>
-  			<PollDetails { ...this.props } />
-  			<EntryList { ...this.props }/>
-  		</div>
+      <div className="row">
+        <div className="col-lg-6">
+    		  <div className="panel panel-default">
+    			 <PollDetails { ...this.props } />
+    			 <EntryList { ...this.props }/>
+    		  </div>
+        </div>
+      </div>
   	);
   }	
 }
@@ -33,7 +37,8 @@ function mapDispatchToProps(dispatch) {
   return {
   	onAddEntryClick: (idPoll, title) => dispatch(addEntry(idPoll, title)),
     onRemoveEntryClick: (idEntry) => dispatch(removeEntry(idEntry)),
-    onRemovePollClick: (idPoll, title) => dispatch(removePollAndNavigate(idPoll, title))
+    onRemovePollClick: (idPoll, title) => dispatch(removePollAndNavigate(idPoll, title)),
+    onEditPollTitleClick: (idPoll, newTitle) => dispatch(editPollTitle(idPoll, newTitle))
   };
 }
 

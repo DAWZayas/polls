@@ -20,9 +20,8 @@ export default class PollItem extends Component {
     	<li className={`list-group-item action-element ${poll.selected ? 'active' : ''}`} onMouseOver={ (e) => this.handleOnMouseOverListItem(e)}>
     		<div className="row">
     			<div className="col-lg-12">
-            	{poll.title}
             	
-            	<Link to={`/poll/${poll.id}`} style={{color: 'inherit', 'marginLeft': '20px'}}><span className={`glyphicon glyphicon-wrench ${poll.selected ? '' : 'hidden'}`} /></Link>
+            	<Link to={`/poll/${poll.id}`} style={{color: 'inherit', textDecoration: 'inherit'}}>{poll.title}<span style={{'marginLeft': '20px'}} className={`glyphicon glyphicon-wrench ${poll.selected ? '' : 'hidden'}`} /></Link>
             	
                 <span onClick={(e) => this.handleRemoveButtonClick(e)} className={`pull-right glyphicon glyphicon-trash ${poll.selected ? '' : 'hidden'}`}/>
                 </div>

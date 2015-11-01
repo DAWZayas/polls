@@ -22,8 +22,7 @@ export default class EntryList extends Component {
     const { entries } = this.props;
 
     return (
-      <div className="row">
-        <div className="col-lg-6">
+      <div className="panel-body">
           <h3>Entry Title</h3>
           <ul className="list-group">
             {
@@ -36,7 +35,6 @@ export default class EntryList extends Component {
               <button className="btn btn-info" type="button" onClick={e => this.handleAddButtonClick(e)}>Add Entry</button>
             </span>
           </div>
-        </div>
       </div>
     );
   }
