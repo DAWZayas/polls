@@ -26,7 +26,7 @@ export default class PollList extends Component {
     onSelectPoll();
   }
 
-  handleOnChange() {
+  handleOnChangeTitle() {
 
     const node = this.refs.title;
     const title =  node.value.trim();
@@ -57,7 +57,7 @@ export default class PollList extends Component {
             }
          </ul>
           <div className="input-group">
-            <input type="text" className="form-control" placeholder="Pull Title" ref="title" onKeyDown={e => this.handleOnTitleKeyDown(e)} onChange={e => this.handleOnChange(e)}/>
+            <input type="text" className="form-control" placeholder="Pull Title" ref="title" onKeyDown={e => this.handleOnTitleKeyDown(e)} onChange={e => this.handleOnChangeTitle(e)}/>
             <span className="input-group-btn">
               <button disabled={this.state.addDisabled} className="btn btn-info" type="button" onClick={e => this.handleAddButtonClick(e)}><span className="glyphicon glyphicon-ok-sign" /></button>
             </span>
