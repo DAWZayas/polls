@@ -8,11 +8,6 @@ export default class PollItem extends Component {
   	onSelectPoll(poll.id);
   }
 
-  handleOnMouseOutListItem() {
-  	const { onSelectPoll } = this.props;
-  	onSelectPoll();
-  }
-
   handleRemoveButtonClick(e) {
   	e.stopPropagation();
   	const { onRemovePoll, poll } = this.props;
@@ -22,7 +17,7 @@ export default class PollItem extends Component {
   render() {
   	const { poll } = this.props;
     return (
-    	<li className={`list-group-item action-element ${poll.selected ? 'active' : ''}`} onMouseOut={ (e) => this.handleOnMouseOutListItem(e)} onMouseOver={ (e) => this.handleOnMouseOverListItem(e)}>
+    	<li className={`list-group-item action-element ${poll.selected ? 'active' : ''}`} onMouseOver={ (e) => this.handleOnMouseOverListItem(e)}>
     		<div className="row">
     			<div className="col-lg-12">
             	{poll.title}

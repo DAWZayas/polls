@@ -7,12 +7,15 @@ import thunk from 'redux-thunk';
 import confirm from '../middlewares/confirm';
 import DevTools from '../containers/DevTools';
 import createLogger from 'redux-logger';
+import { SELECT_POLL } from '../actions';
 
 
 const createStoreWithMiddleware = compose(
   applyMiddleware(thunk, confirm),
   reduxReactRouter({ routes, createHistory }),
-  applyMiddleware(createLogger()),
+  applyMiddleware(createLogger({
+    predicate: (getState, action) => action.type !== SELECT_POLL
+  })),
   DevTools.instrument()
 )(createStore);
 

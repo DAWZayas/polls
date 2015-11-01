@@ -5,6 +5,9 @@ export default class PollList extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      addDisabled: true
+    };
   }
 
   handleAddButtonClick() {
@@ -13,6 +16,31 @@ export default class PollList extends Component {
     const title =  node.value.trim();
     onAddPoll(title);
     node.value = '';
+    this.setState({
+      addDisabled: true
+    });
+  }
+
+  handleOnMouseOutPollList() {
+    const { onSelectPoll } = this.props;
+    onSelectPoll();
+  }
+
+  handleOnChange() {
+
+    const node = this.refs.title;
+    const title =  node.value.trim();
+
+    this.setState({
+      addDisabled: title.length === 0
+    });
+  }
+
+  handleOnTitleKeyDown(event) {
+    const ENTER_KEY = 13;
+    if (event.keyCode === ENTER_KEY && !this.state.addDisabled) {
+      this.handleAddButtonClick();
+    }
   }
 
   render() {
@@ -23,15 +51,15 @@ export default class PollList extends Component {
       <div className="row">
         <div className="col-lg-6">
           <h3>Poll Title</h3>
-          <ul className="list-group">
+          <ul className="list-group" onMouseOut={ (e) => this.handleOnMouseOutPollList(e)}>
             {
               polls.map( (poll, index) =>  <PollItem key={index} poll={poll} onSelectPoll={onSelectPoll} onRemovePoll={onRemovePoll} /> )
             }
          </ul>
           <div className="input-group">
-            <input type="text" className="form-control" placeholder="Pull Title" ref="title"/>
+            <input type="text" className="form-control" placeholder="Pull Title" ref="title" onKeyDown={e => this.handleOnTitleKeyDown(e)} onChange={e => this.handleOnChange(e)}/>
             <span className="input-group-btn">
-              <button className="btn btn-info" type="button" onClick={e => this.handleAddButtonClick(e)}>Add Pull</button>
+              <button disabled={this.state.addDisabled} className="btn btn-info" type="button" onClick={e => this.handleAddButtonClick(e)}><span className="glyphicon glyphicon-ok-sign" /></button>
             </span>
           </div>
         </div>
