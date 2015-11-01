@@ -7,6 +7,7 @@ import sequencer from './sequencer';
 export const SET_POLLS = 'SET_POLLS';
 export const ADD_POLL = 'ADD_POLL';
 export const REMOVE_POLL = 'REMOVE_POLL';
+export const SELECT_POLL = 'SELECT_POLL';
 
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
@@ -64,6 +65,10 @@ export function removePollAndNavigate(idPoll, title) {
       () => dispatch(removePoll(idPoll, title)),
       () => dispatch(pushState(null, '/poll'))
     ]);
+}
+
+export function selectPoll(idPoll) {
+  return { type: SELECT_POLL, idPoll };
 }
 
 /*

@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import PollItem from './PollItem';
-import { Link } from 'react-router';
 
 export default class PollList extends Component {
 
@@ -9,20 +8,16 @@ export default class PollList extends Component {
   }
 
   handleAddButtonClick() {
-    const { onAddPullClick } = this.props;
+    const { onAddPoll } = this.props;
     const node = this.refs.title;
     const title =  node.value.trim();
-    onAddPullClick(title);
+    onAddPoll(title);
     node.value = '';
-  }
-
-  handleRemoveButtonClick(idPoll, titlePoll) {
-    this.props.onRemovePollClick(idPoll, titlePoll);
   }
 
   render() {
 
-    const { polls } = this.props;
+    const { polls, onSelectPoll, onRemovePoll } = this.props;
 
     return (
       <div className="row">
@@ -30,13 +25,7 @@ export default class PollList extends Component {
           <h3>Poll Title</h3>
           <ul className="list-group">
             {
-              polls.map( (poll, index) =>
-                <PollItem key={index} poll={poll}>
-                  <div>
-                    <Link to={`/poll/${poll.id}`}>{poll.title}</Link>
-                    <button onClick={() => this.handleRemoveButtonClick(poll.id, poll.title)} className="btn btn-warning">Remove</button>
-                  </div>
-                </PollItem> )
+              polls.map( (poll, index) =>  <PollItem key={index} poll={poll} onSelectPoll={onSelectPoll} onRemovePoll={onRemovePoll} /> )
             }
          </ul>
           <div className="input-group">
@@ -53,8 +42,9 @@ export default class PollList extends Component {
 
 PollList.propTypes = {
   polls: PropTypes.array,
-  onAddPullClick: PropTypes.func.isRequired,
-  onRemovePollClick: PropTypes.func.isRequired
+  onAddPoll: PropTypes.func.isRequired,
+  onRemovePoll: PropTypes.func.isRequired,
+  onSelectPoll:  PropTypes.func.isRequired
 };
 
 PollList.defaultProps = { 
