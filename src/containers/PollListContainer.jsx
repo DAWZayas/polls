@@ -13,7 +13,7 @@ function mapActionsToProps(dispatch) {
   return {
     onAddPoll: title => dispatch(addPoll(title)),
     onSelectPoll: idPoll => dispatch(selectPoll(idPoll)),
-    onRemovePoll: (idPoll, title) => dispatch(removePoll(idPoll, title)).catch(_ => _)
+    onRemovePoll: (idPoll, title) => dispatch(removePoll(idPoll, title))
   };
 }
 
