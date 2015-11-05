@@ -21,11 +21,6 @@ export default class PollList extends Component {
     });
   }
 
-  handleOnMouseOutPollList() {
-    const { onSelectPoll } = this.props;
-    onSelectPoll();
-  }
-
   handleOnChangeTitle() {
 
     const node = this.refs.title;
@@ -45,15 +40,15 @@ export default class PollList extends Component {
 
   render() {
 
-    const { polls, onSelectPoll, onRemovePoll } = this.props;
+    const { polls, onRemovePoll } = this.props;
 
     return (
       <div className="row">
-        <div className="col-lg-6">
+        <div className="col-md-6">
           <h3>Poll Title</h3>
-          <ul className="list-group" onMouseOut={ (e) => this.handleOnMouseOutPollList(e)}>
+          <ul className="list-group">
             {
-              polls.map( (poll, index) =>  <PollItem key={index} poll={poll} onSelectPoll={onSelectPoll} onRemovePoll={onRemovePoll} /> )
+              polls.map( (poll, index) =>  <PollItem key={index} poll={poll} onRemovePoll={onRemovePoll} /> )
             }
          </ul>
           <div className="input-group">
@@ -71,8 +66,7 @@ export default class PollList extends Component {
 PollList.propTypes = {
   polls: PropTypes.array,
   onAddPoll: PropTypes.func.isRequired,
-  onRemovePoll: PropTypes.func.isRequired,
-  onSelectPoll:  PropTypes.func.isRequired
+  onRemovePoll: PropTypes.func.isRequired
 };
 
 PollList.defaultProps = { 

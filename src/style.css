@@ -1,3 +1,18 @@
 .action-element {
 	cursor: pointer;
 }
+
+.list-group-item .action-icon {
+  display: none;
+}
+
+.list-group-item:hover {
+  z-index: 2;
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+
+.list-group-item:hover .action-icon {
+  display: inherit;
+}

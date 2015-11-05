@@ -13,7 +13,7 @@ export default class NotificationsDetail extends Component {
   render() {
   	const { messages } = this.props;
     return (
-      <div>
+      <div className="col-md-6">
       	<h3>Pending messages</h3>
         { messages.map( (messsage, index) => {
           const className = messsage.isNew ? 'alert alert-info' : 'alert alert-success';

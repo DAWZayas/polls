@@ -22,7 +22,8 @@ export default class PollDetails extends Component {
     });
 
     node.value = poll.title;
-    node.setSelectionRange(0, node.value.length);
+    setTimeout(() => node.focus(), 0);
+    setTimeout(() => node.setSelectionRange(0, node.value.length), 0);
   }
 
   handleCancelClick() {

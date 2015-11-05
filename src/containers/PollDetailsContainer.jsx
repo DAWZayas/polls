@@ -15,7 +15,7 @@ class PollDetailsContainer extends Component {
   render() {
   	return (
       <div className="row">
-        <div className="col-lg-6">
+        <div className="col-md-6">
     		  <div className="panel panel-default">
     			 <PollDetails { ...this.props } />
     			 <EntryList { ...this.props }/>
