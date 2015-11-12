@@ -1,7 +1,7 @@
 
 # Demo
 
-[got to app](http://surtich.github.io/polls/)
+[got to app](http://dawzayas.github.io/polls)
 
 # To install
 ```bash
