@@ -23,10 +23,10 @@ export default class EntryList extends Component {
 
     return (
       <div className="panel-body">
-          <h3>Entry Title</h3>
+          <h3>Entries</h3>
           <ul className="list-group">
             {
-              entries.map( (entry, index) => <li key={index}>{entry.title}<button onClick={() => this.handleRemoveButtonClick(entry.id)} className="btn btn-warning">Remove</button></li> )
+              entries.map( (entry, index) => <li style={{height: '55px'}} className="list-group-item" key={index}>{entry.title}<button onClick={() => this.handleRemoveButtonClick(entry.id)} className="btn btn-warning pull-right"><span className="glyphicon glyphicon-trash"></span></button></li> )
             }
          </ul>
           <div className="input-group">

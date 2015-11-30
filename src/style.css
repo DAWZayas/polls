@@ -1,5 +1,6 @@
 .action-element {
 	cursor: pointer;
+	outline: none;
 }
 
 .list-group-item .action-icon {
@@ -14,5 +15,27 @@
 }
 
 .list-group-item:hover .action-icon {
-  display: inherit;
+  display: inline;
+}
+
+.list-group-item a {
+  color: black;
+}
+
+.list-group-item a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+
+.badge-info {
+  color: #31708f !important;
+  background-color: #d9edf7 !important;
+  border-color: #bce8f1 !important;
+}
+
+.badge-success {
+  color: #3c763d !important;
+  background-color: #dff0d8 !important;
+  border-color: #d6e9c6 !important;
 }

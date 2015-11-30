@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import MenuItem from './MenuItem';
 
 export default class Notifications extends Component {
 
@@ -8,18 +8,23 @@ export default class Notifications extends Component {
   }
 
   render() {
-    const { pending, total } = this.props;
+    const { pending, total, active } = this.props;
+    let className = 'badge';
+    if (pending  > 0) {
+      className += ' badge-info';
+    } else if (total !== 0) {
+      className += ' badge-success';
+    }
     return (
-      <div>
-        <Link to="/notifications">Messages <span className="badge">{total === 0 ? 0 : `${pending}/${total}`}</span></Link>
-      </div>
+        <MenuItem href="/notifications" active={ active }>Messages <span className={ className }>{total === 0 ? 0 : `${pending}/${total}`}</span></MenuItem>
     );
   }
 }
 
 Notifications.propTypes = {
   total: PropTypes.number,
-  pending: PropTypes.number
+  pending: PropTypes.number,
+  active: PropTypes.string.isRequired,
 };
 
 Notifications.defaultProps = { 

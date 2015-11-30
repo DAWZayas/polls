@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
-import { removeNotification } from '../actions';
+import { removeNotification, removeAllNotifications, setNotificationAsReaded } from '../actions';
 
 import NotificationsDetail from '../components/NotificationsDetail';
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages.slice().reverse()
+    messages: state.messages
   };
 }
 
 function mapActionsToProps(dispatch) {
   return {
-  	onRemoveNotificationClick: (index) => dispatch(removeNotification(index))
+  	onRemoveNotificationClick: (index) => dispatch(removeNotification(index)),
+  	onRemoveAllNotificationsClick: () => dispatch(removeAllNotifications()),
+  	onShowMessage: (index) => dispatch(setNotificationAsReaded(index))
   };
 }
 

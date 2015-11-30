@@ -12,7 +12,7 @@ export default class PollItem extends Component {
   render() {
   	const { poll } = this.props;
     return (
-    	<li className={'list-group-item action-element'} >
+    	<li className="list-group-item action-element" >
     		<div className="row">
     			<div className="col-lg-12">
             	

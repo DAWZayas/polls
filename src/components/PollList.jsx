@@ -45,7 +45,6 @@ export default class PollList extends Component {
     return (
       <div className="row">
         <div className="col-md-6">
-          <h3>Poll Title</h3>
           <ul className="list-group">
             {
               polls.map( (poll, index) =>  <PollItem key={index} poll={poll} onRemovePoll={onRemovePoll} /> )

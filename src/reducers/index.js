@@ -4,13 +4,15 @@ import polls from './poll';
 import entries from './entry';
 import messages from './notify';
 import actionsPending from './confirm';
+import menu from './menu';
 
 const pollApp = combineReducers({
   polls,
   entries,
   router,
   messages,
-  actionsPending
+  actionsPending,
+  menu
 });
 
 export default pollApp;

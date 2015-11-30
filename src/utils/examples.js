@@ -60,7 +60,7 @@ export const entries = {
   9: {
     id: '9',
     idPoll: polls[0].id,
-    title: 'Podemos.' 
+    title: 'Podemos' 
   },
   10: {
     id: '10',

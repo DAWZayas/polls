@@ -50,6 +50,7 @@
     "bootstrap": "^3.3.5",
     "history": "^1.13.0",
     "immutable": "^3.7.5",
+    "jquery": "^2.1.4",
     "node-uuid": "^1.4.3",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
