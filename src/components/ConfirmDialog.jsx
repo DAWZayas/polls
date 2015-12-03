@@ -19,7 +19,6 @@ export default class ConfirmDialog extends Component {
 
   render() {
     const { isOpen, msg } = this.props;
-    
     return (
       <Modal isOpen={isOpen} onRequestHide={() => this.handleCancelClick()} backdrop keyboard>
         <div className="modal-header">
@@ -50,7 +49,7 @@ ConfirmDialog.propTypes = {
   onConfirmClick: PropTypes.func
 };
 
-ConfirmDialog.defaultProps = {   
+ConfirmDialog.defaultProps = {
   isOpen: false,
   msg: 'Are you sure?'
 };

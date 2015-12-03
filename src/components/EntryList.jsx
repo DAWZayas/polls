@@ -47,6 +47,6 @@ EntryList.propTypes = {
   onRemoveEntryClick: PropTypes.func.isRequired
 };
 
-EntryList.defaultProps = { 
+EntryList.defaultProps = {
   entries: []
 };

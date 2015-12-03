@@ -27,16 +27,16 @@ function removePoll(state, idPoll) {
 }
 
 export default function entryReducer(state = {}, action) {
-	switch (action.type) {
-  	case ADD_ENTRY:
-  		return addEntry(state, action.idPoll, action.title);
+  switch (action.type) {
+    case ADD_ENTRY:
+      return addEntry(state, action.idPoll, action.title);
     case REMOVE_ENTRY:
       return removeEntry(state, action.idEntry);
     case VOTE_ENTRY:
       return voteEntry(state, action.idEntry);
     case REMOVE_POLL:
       return removePoll(state, action.idPoll);
-  	default:
-  		return state;
+    default:
+      return state;
   }
 }

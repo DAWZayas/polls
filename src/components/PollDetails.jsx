@@ -44,10 +44,10 @@ export default class PollDetails extends Component {
   }
 
   render() {
-  	const { poll } = this.props;
+    const { poll } = this.props;
     return (
       <div className="panel-heading">
-      	   <h3>
+          <h3>
             <span  className={`${this.state.editing ? 'hidden' : ''}`}>
               { poll.title }
               <span style={{'marginLeft': '20px'}} className="btn glyphicon glyphicon-edit" onClick={ () => this.handleEditClick() }/>

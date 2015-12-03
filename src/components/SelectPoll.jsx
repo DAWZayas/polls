@@ -22,10 +22,9 @@ export default class SelectPoll extends Component {
     const { polls } = this.props;
     const filterredPolls = this.filterPolls(polls, this.state.filter);
     const noResults = this.state.filter.length >= 3 && filterredPolls.length === 0 ? 'No results' : null;
-    
     return (
       <div className="row">
-        <div className="col-md-6">          
+        <div className="col-md-6">
           <div className="input-group">
             <input type="text" className="form-control" placeholder="Pull Title" ref="title" onChange={e => this.handleOnChangeTitle(e)}/>
             <span className="input-group-btn">
@@ -38,9 +37,9 @@ export default class SelectPoll extends Component {
               filterredPolls.map( (poll, index) =>  <li className="list-group-item" key={index}><Link to={`/vote/${poll.id}`}>{poll.title}</Link></li> )
             }
          </ul>
-         <h4>{noResults}</h4>
-        </div> 
-      </div> 
+         <h4>{ noResults }</h4>
+        </div>
+      </div>
     );
   }
 }

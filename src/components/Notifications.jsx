@@ -27,7 +27,7 @@ Notifications.propTypes = {
   active: PropTypes.string.isRequired,
 };
 
-Notifications.defaultProps = { 
+Notifications.defaultProps = {
   total: 0,
   pending: 0
 };

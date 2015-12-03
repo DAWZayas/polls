@@ -1,6 +1,6 @@
 import { getId } from './index';
 
-export const polls = [ 
+export const polls = [
   {
     id: getId(),
     title: 'Spanish Political Parties'
@@ -12,63 +12,62 @@ export const polls = [
 ];
 
 export const entries = {
-	0: {
+  0: {
     id: '0',
-		idPoll: polls[1].id,
-		title: 'Java'	
-	},
+    idPoll: polls[1].id,
+    title: 'Java'
+  },
   1: {
     id: '1',
     idPoll: polls[1].id,
-    title: 'JavaScript' 
+    title: 'JavaScript'
   },
   2: {
     id: '2',
     idPoll: polls[1].id,
-    title: 'PHP' 
+    title: 'PHP'
   },
   3: {
     id: '3',
     idPoll: polls[1].id,
-    title: 'C#' 
+    title: 'C#'
   },
   4: {
     id: '4',
     idPoll: polls[1].id,
-    title: 'Python' 
+    title: 'Python'
   },
   5: {
     id: '5',
     idPoll: polls[1].id,
-    title: 'Ruby' 
+    title: 'Ruby'
   },
   6: {
     id: '6',
     idPoll: polls[1].id,
-    title: 'Haskell' 
+    title: 'Haskell'
   },
   7: {
     id: '7',
     idPoll: polls[0].id,
-    title: 'PP' 
+    title: 'PP'
   },
   8: {
     id: '8',
     idPoll: polls[0].id,
-    title: 'C\'s' 
+    title: 'C\'s'
   },
   9: {
     id: '9',
     idPoll: polls[0].id,
-    title: 'Podemos' 
+    title: 'Podemos'
   },
   10: {
     id: '10',
     idPoll: polls[0].id,
-    title: 'PSOE' 
+    title: 'PSOE'
   }
 };
-
 
 
 export const initialState = {

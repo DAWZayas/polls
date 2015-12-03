@@ -4,20 +4,20 @@ import { removeNotification, removeAllNotifications, setNotificationAsReaded } f
 import NotificationsDetail from '../components/NotificationsDetail';
 
 function mapStateToProps(state) {
-  return {
-    messages: state.messages
-  };
+	return {
+		messages: state.messages
+	};
 }
 
 function mapActionsToProps(dispatch) {
-  return {
-  	onRemoveNotificationClick: (index) => dispatch(removeNotification(index)),
-  	onRemoveAllNotificationsClick: () => dispatch(removeAllNotifications()),
-  	onShowMessage: (index) => dispatch(setNotificationAsReaded(index))
-  };
+	return {
+		onRemoveNotificationClick: (index) => dispatch(removeNotification(index)),
+		onRemoveAllNotificationsClick: () => dispatch(removeAllNotifications()),
+		onShowMessage: (index) => dispatch(setNotificationAsReaded(index))
+	};
 }
 
 export default connect(
-  mapStateToProps,
-  mapActionsToProps
+	mapStateToProps,
+	mapActionsToProps
 )(NotificationsDetail);

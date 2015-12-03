@@ -17,13 +17,14 @@ function removeActionConfirmation(state, pendingAction) {
   return state.remove(pendingAction.idConfirmation);
 }
 
-export default function entryReducer(state = OrderedMap(), action) {
-	switch (action.type) {
-  	case CREATE_ACTION_CONFIRMATION:
-  		return createActionConfirmation(state, action.pendingAction);
+export default function entryReducer(state = OrderedMap(), action) { // eslint-disable-line new-cap
+  switch (action.type) {
+    case CREATE_ACTION_CONFIRMATION:
+      return createActionConfirmation(state, action.pendingAction);
     case REMOVE_ACTION_CONFIRMATION:
       return removeActionConfirmation(state, action.pendingAction);
-  	default:
-  		return state;
+    default:
+      return state;
   }
-};
+}
+

@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-  	onVoteEntryClick: (idPoll) => dispatch(voteEntry(idPoll))
+    onVoteEntryClick: (idPoll) => dispatch(voteEntry(idPoll))
   };
 }
 

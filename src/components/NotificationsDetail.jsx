@@ -27,7 +27,7 @@ export default class NotificationsDetail extends Component {
   }
 
   render() {
-  	const { messages, onRemoveNotificationClick, onShowMessage } = this.props;
+    const { messages, onRemoveNotificationClick, onShowMessage } = this.props;
     const { maxMessages } = this.state;
     const noMessages = messages.length === 0 ? <h3>No messages</h3> : null;
     const loadMore = maxMessages < messages.length ? <button style={{'margin-left': '10px'}} className="btn btn-default pull-right" onClick={ () => this.handleLoadMoreButtonClick() }>Load More</button> : null;
@@ -50,6 +50,6 @@ NotificationsDetail.propTypes = {
   onShowMessage: PropTypes.func.isRequired
  };
 
- NotificationsDetail.defaultProps = { 
+ NotificationsDetail.defaultProps = {
   messages: []
 };

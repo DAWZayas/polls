@@ -7,21 +7,22 @@ import thunk from 'redux-thunk';
 import confirm from '../middlewares/confirm';
 import DevTools from '../containers/DevTools';
 import createLogger from 'redux-logger';
-import { SELECT_POLL } from '../actions';
+import { FIREBASE_URL } from '../config';
+import Firebase from 'firebase';
 
 
 const createStoreWithMiddleware = compose(
   applyMiddleware(thunk, confirm),
   reduxReactRouter({ routes, createHistory }),
-  applyMiddleware(createLogger({
-    predicate: (getState, action) => action.type !== SELECT_POLL
-  })),
+  applyMiddleware(createLogger()),
   DevTools.instrument()
 )(createStore);
 
-export default function configureStore(initialState = {}) {
+export default function configureStore(initialState) {
 
-  const store = createStoreWithMiddleware(reducer, initialState);
+  const store = createStoreWithMiddleware(reducer,
+    initialState || { firebase: new Firebase(FIREBASE_URL) }
+  );
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

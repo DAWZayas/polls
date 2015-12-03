@@ -9,7 +9,7 @@ import PollVoteContainer from './containers/PollVoteContainer';
 
 export default (
   <Route path="/" component={App}>
-  	<Route path="poll" component={PollListContainer} />
+    <Route path="poll" component={PollListContainer} />
     <Route path="poll/:idPoll" component={PollDetailsContainer} />
     <Route path="notifications" component={NotificationsDetailContainer} />
     <Route path="vote" component={SelectPollContainer} />

@@ -32,11 +32,11 @@ export default class PollVote extends Component {
   }
 
   render() {
-  	const { poll, entries } = this.props;
+    const { poll, entries } = this.props;
     const total = this.totalVotes(entries);
     return (
       <div className="panel-heading">
-      	   <h4>
+          <h4>
             <div>
               Poll: { poll.title }
             </div>

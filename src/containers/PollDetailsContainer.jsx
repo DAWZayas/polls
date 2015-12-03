@@ -13,17 +13,17 @@ class PollDetailsContainer extends Component {
   }
 
   render() {
-  	return (
+    return (
       <div className="row">
         <div className="col-md-6">
-    		  <div className="panel panel-default">
-    			 <PollDetails { ...this.props } />
-    			 <EntryList { ...this.props }/>
-    		  </div>
+          <div className="panel panel-default">
+           <PollDetails { ...this.props } />
+           <EntryList { ...this.props }/>
+          </div>
         </div>
       </div>
-  	);
-  }	
+    );
+  }
 }
 
 function mapStateToProps(state) {
@@ -35,7 +35,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-  	onAddEntryClick: (idPoll, title) => dispatch(addEntry(idPoll, title)),
+    onAddEntryClick: (idPoll, title) => dispatch(addEntry(idPoll, title)),
     onRemoveEntryClick: (idEntry) => dispatch(removeEntry(idEntry)),
     onRemovePollClick: (idPoll, title) => dispatch(removePollAndNavigate(idPoll, title)),
     onEditPollTitleClick: (idPoll, newTitle) => dispatch(editPollTitle(idPoll, newTitle))

@@ -68,6 +68,6 @@ PollList.propTypes = {
   onRemovePoll: PropTypes.func.isRequired
 };
 
-PollList.defaultProps = { 
+PollList.defaultProps = {
   polls: []
 };

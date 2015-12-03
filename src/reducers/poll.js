@@ -7,8 +7,8 @@ function setPolls(state, polls) {
 
 function addPoll(state, title) {
   return state.concat({
-  	id: getId(),
-  	title
+    id: getId(),
+    title
   });
 }
 
@@ -18,19 +18,19 @@ function removePoll(state, idPoll) {
 
 function editPollTitle(state, idPoll, title) {
   return state.map( poll => idPoll === poll.id ? Object.assign({}, poll, { title:  title}) : poll );
-} 
+}
 
 export default function pollReducer(state = [], action) {
-	switch (action.type) {
-  	case SET_POLLS:
-  		return setPolls(state, action.polls);
-  	case ADD_POLL:
-  		return addPoll(state, action.title);
+  switch (action.type) {
+    case SET_POLLS:
+      return setPolls(state, action.polls);
+    case ADD_POLL:
+      return addPoll(state, action.title);
     case REMOVE_POLL:
       return removePoll(state, action.idPoll);
     case EDIT_POLL_TITLE:
-      return editPollTitle(state, action.idPoll, action.title);    
-  	default:
-  		return state;
-  	}
+      return editPollTitle(state, action.idPoll, action.title);
+    default:
+      return state;
+    }
 }

@@ -16,9 +16,9 @@ export default class NotificationItem extends Component {
   }
 
   render() {
-  	const { message, index } = this.props;
+    const { message, index } = this.props;
     const className = message.isNew ? 'alert alert-info' : 'alert alert-success';
-    return (      
+    return (
       <div className={className} role="alert">
         <button type="button" className="close" onClick={ () => this.handleRemoveButtonClick(index)}><span>&times;</span></button>
         <strong>Info:</strong> {message.text} Created: {message.created.toUTCString()}

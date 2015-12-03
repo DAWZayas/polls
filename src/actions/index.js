@@ -1,6 +1,9 @@
 import { pushState } from 'redux-router';
 import sequencer from './sequencer';
 
+import * as authActions from './auth';
+export { authActions };
+
 /*
  * action types
  */
@@ -11,11 +14,8 @@ export const REMOVE_POLL = 'REMOVE_POLL';
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
 export const EDIT_POLL_TITLE = 'EDIT_POLL_TITLE';
-export const VOTE_ENTRY = 'VOTE_ENTRY';
 
 export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
-export const REMOVE_ALL_NOTIFICATIONS = 'REMOVE_ALL_NOTIFICATIONS';
-export const SET_NOTIFICATION_AS_READED = 'SET_NOTIFICATION_AS_READED';
 
 export const CREATE_ACTION_CONFIRMATION = 'CREATE_ACTION_CONFIRMATION';
 export const REMOVE_ACTION_CONFIRMATION = 'REMOVE_ACTION_CONFIRMATION';
@@ -25,10 +25,10 @@ export const REMOVE_ACTION_CONFIRMATION = 'REMOVE_ACTION_CONFIRMATION';
  */
 
 export const NotifyLevels = {
-	DEBUG: 'DEBUG',
-	INFO: 'INFO',
-	WARNING: 'WARNING',
-	ERROR: 'ERROR'
+  DEBUG: 'DEBUG',
+  INFO: 'INFO',
+  WARNING: 'WARNING',
+  ERROR: 'ERROR'
 };
 
 /*
@@ -36,30 +36,30 @@ export const NotifyLevels = {
  */
 
 export function setPolls(polls) {
-  return { type: SET_POLLS, polls, 
-  	meta: {
-  	  notify: { level: NotifyLevels.INFO }
-  	}
+  return { type: SET_POLLS, polls,
+    meta: {
+      notify: { level: NotifyLevels.INFO }
+    }
   };
 }
 
 export function addPoll(title) {
-  return { type: ADD_POLL, title, 
-  	meta: {
-  	  notify: { level: NotifyLevels.INFO }
-  	}
+  return { type: ADD_POLL, title,
+    meta: {
+      notify: { level: NotifyLevels.INFO }
+    }
   };
 }
 
 export function removePoll(idPoll, titlePoll) {
-  return { type: REMOVE_POLL, idPoll, redirect: '/', 
-  	meta: {
-  	  notify: { level: NotifyLevels.INFO },
-  	  confirm: {
-  	  	pending: true,
-  		  msg: `Are you sure you want to remove the "${titlePoll}" poll?`
+  return { type: REMOVE_POLL, idPoll, redirect: '/',
+    meta: {
+      notify: { level: NotifyLevels.INFO },
+      confirm: {
+        pending: true,
+        msg: `Are you sure you want to remove the "${titlePoll}" poll?`
       }
-  	}
+    }
   };
 }
 
@@ -71,7 +71,7 @@ export function removePollAndNavigate(idPoll, title) {
 }
 
 export function editPollTitle(idPoll, title) {
-  return { type: EDIT_POLL_TITLE, idPoll, title, 
+  return { type: EDIT_POLL_TITLE, idPoll, title,
     meta: {
       notify: { level: NotifyLevels.INFO }
     }
@@ -83,23 +83,15 @@ export function editPollTitle(idPoll, title) {
  */
 
 export function addEntry(idPoll, title) {
-  return { type: ADD_ENTRY, idPoll, title, 
-  	meta: {
-  		notify: { level: NotifyLevels.INFO }
-  	}
+  return { type: ADD_ENTRY, idPoll, title,
+    meta: {
+      notify: { level: NotifyLevels.INFO }
+    }
   };
 }
 
 export function removeEntry(idEntry) {
-  return { type: REMOVE_ENTRY, idEntry, 
-  	meta: {
-  		notify: { level: NotifyLevels.INFO }
-  	}
-  };
-}
-
-export function voteEntry(idEntry) {
-  return { type: VOTE_ENTRY, idEntry, 
+  return { type: REMOVE_ENTRY, idEntry,
     meta: {
       notify: { level: NotifyLevels.INFO }
     }
@@ -110,16 +102,8 @@ export function voteEntry(idEntry) {
  * Notification action creators
  */
 
-export function setNotificationAsReaded(index) {
-  return { type: SET_NOTIFICATION_AS_READED, index };
-}
-
 export function removeNotification(index) {
   return { type: REMOVE_NOTIFICATION, index };
-}
-
-export function removeAllNotifications() {
-  return { type: REMOVE_ALL_NOTIFICATIONS };
 }
 
 /*

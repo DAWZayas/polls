@@ -6,18 +6,18 @@ import ConfirmDialog from '../components/ConfirmDialog';
 function mapStateToProps(state) {
   const action = state.actionsPending.first();
   return !action ?
-  	{ isOpen: false } :
-  	{
-	  isOpen: true,
-	  action: action,
-	  msg: action.meta.confirm.msg
-  	};
+    { isOpen: false } :
+    {
+      isOpen: true,
+      action: action,
+      msg: action.meta.confirm.msg
+    };
 }
 
 function mapActionsToProps(dispatch) {
   return {
-  	onCancelClick: (action) => dispatch(cancelAction(action)),
-  	onConfirmClick: (action) => dispatch(confirmAction(action))
+    onCancelClick: (action) => dispatch(cancelAction(action)),
+    onConfirmClick: (action) => dispatch(confirmAction(action))
   };
 }
 

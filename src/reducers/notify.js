@@ -37,5 +37,4 @@ export default function notifyReducer(state = [], action) {
     default:
       return addNotification(state, action);
   }
-  
 }
