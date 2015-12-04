@@ -14,8 +14,11 @@ export const REMOVE_POLL = 'REMOVE_POLL';
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
 export const EDIT_POLL_TITLE = 'EDIT_POLL_TITLE';
+export const VOTE_ENTRY = 'VOTE_ENTRY';
 
 export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
+export const REMOVE_ALL_NOTIFICATIONS = 'REMOVE_ALL_NOTIFICATIONS';
+export const SET_NOTIFICATION_AS_READED = 'SET_NOTIFICATION_AS_READED';
 
 export const CREATE_ACTION_CONFIRMATION = 'CREATE_ACTION_CONFIRMATION';
 export const REMOVE_ACTION_CONFIRMATION = 'REMOVE_ACTION_CONFIRMATION';
@@ -98,12 +101,28 @@ export function removeEntry(idEntry) {
   };
 }
 
+export function voteEntry(idEntry) {
+  return { type: VOTE_ENTRY, idEntry,
+    meta: {
+      notify: { level: NotifyLevels.INFO }
+    }
+  };
+}
+
 /*
  * Notification action creators
  */
 
+export function setNotificationAsReaded(index) {
+  return { type: SET_NOTIFICATION_AS_READED, index };
+}
+
 export function removeNotification(index) {
   return { type: REMOVE_NOTIFICATION, index };
+}
+
+export function removeAllNotifications() {
+  return { type: REMOVE_ALL_NOTIFICATIONS };
 }
 
 /*

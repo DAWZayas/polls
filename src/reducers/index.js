@@ -5,14 +5,18 @@ import entries from './entry';
 import messages from './notify';
 import actionsPending from './confirm';
 import menu from './menu';
+import firebase from './firebase';
+import auth from './auth';
 
 const pollApp = combineReducers({
+  auth,
   polls,
   entries,
   router,
   messages,
   actionsPending,
-  menu
+  menu,
+  firebase
 });
 
 export default pollApp;
