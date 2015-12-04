@@ -8,7 +8,8 @@
     "test": "npm run lint ; mocha --compilers js:babel-core/register --require ./test/react/test_helper.js 'test/testSeq.js'",
     "test:watch": "npm run test -- --watch",
     "lint": "./node_modules/.bin/eslint --ext=jsx --ext=js src/ test/",
-    "dist": "rm -rf dist/bundle.js dist/*.svg && ./node_modules/.bin/webpack --config webpack.production.config.js"
+    "dist": "rm -rf dist/bundle.js dist/*.svg && ./node_modules/.bin/webpack --config webpack.production.config.js",
+    "deploy": "npm run dist -- && node_modules/.bin/firebase login && node_modules/.bin/firebase deploy && node_modules/.bin/firebase open"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "eslint-loader": "^1.1.0",
     "eslint-plugin-react": "^3.6.3",
     "file-loader": "^0.8.4",
+    "firebase-tools": "^2.1.0",
     "jsdom": "^7.0.2",
     "mocha": "^2.3.3",
     "react-addons-test-utils": "^0.14.0",

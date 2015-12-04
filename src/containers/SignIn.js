@@ -16,8 +16,8 @@ class SignIn extends Component {
         <div className="col-md-6">
           <h1>Sign in</h1>
           <button className="btn" onClick={signInWithGithub}>GitHub</button>
-          <button className="btn" onClick={signInWithGoogle}>Google</button>
-          <button className="btn" onClick={signInWithTwitter}>Twitter</button>
+          <button disabled className="btn" onClick={signInWithGoogle}>Google</button>
+          <button disabled className="btn" onClick={signInWithTwitter}>Twitter</button>
         </div>
       </div>
     );

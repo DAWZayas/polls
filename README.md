@@ -1,7 +1,7 @@
 
 # Demo
 
-[got to app](http://dawzayas.github.io/polls)
+<a href="https://redux-polls.firebaseapp.com" target="redux-polls">got to app</a>
 
 # To install
 ```bash
@@ -35,4 +35,9 @@ And goto [http://localhost:8080](http://localhost:8080)
 # To dist
 ```bash
 	npm run dist
+```
+
+# To deploy to Firebase
+```bash
+	npm run deploy
 ```
