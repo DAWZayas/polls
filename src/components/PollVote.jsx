@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Spinner from './Spinner';
 
 const progressContex = [
   'progress-bar-success',
@@ -11,10 +12,15 @@ export default class PollVote extends Component {
 
   constructor(props) {
     super(props);
+    this.state = { loading: true };
   }
 
   componentWillMount() {
     this.props.registerListeners(this.props.params);
+  }
+
+  componentWillReceiveProps() {
+    this.setState({ loading: false });
   }
 
   componentWillUnmount() {
@@ -43,30 +49,33 @@ export default class PollVote extends Component {
     const { poll } = this.props;
     const entries = poll.entries || {};
     const total = this.totalVotes(entries);
+    const contents = this.state.loading ? <Spinner /> : <div>
+        <div className="panel-heading">
+            <h4>
+              <div>
+                Poll: { poll.title }
+              </div>
+            </h4>
+             </div>
+            <div className="panel-body">
+              <h4>Entries</h4>
+              <ul className="list-group">
+                {
+                  Object.keys(entries).map( (id, index) =>
+                    <li className="list-group-item" key={index}>
+                      { entries[id].title }
+                      <span onClick={ () => this.handleVoteClick(poll.id, id) } className="action-element glyphicon glyphicon-arrow-up"/>
+                      <br/>
+                      { this.createProgressBar(entries[id], total, index) }
+                    </li>
+                  )
+                }
+             </ul>
+        </div>
+      </div>;
     return (
-      <div className="panel-heading">
-          <h4>
-            <div>
-              Poll: { poll.title }
-            </div>
-          </h4>
-           <div className="col-md-6">
-          <div className="panel-body">
-            <h4>Entries</h4>
-            <ul className="list-group">
-              {
-                Object.keys(entries).map( (id, index) =>
-                  <li className="list-group-item" key={index}>
-                    { entries[id].title }
-                    <span onClick={ () => this.handleVoteClick(poll.id, id) } className="action-element glyphicon glyphicon-arrow-up"/>
-                    <br/>
-                    { this.createProgressBar(entries[id], total, index) }
-                  </li>
-                )
-              }
-           </ul>
-        </div>
-        </div>
+      <div className="panel panel-default">
+        { contents }
       </div>
     );
   }

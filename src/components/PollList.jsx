@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import PollItem from './PollItem';
+import Spinner from './Spinner';
 
 export default class PollList extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      addDisabled: true
+      addDisabled: true,
+      loading: true
     };
   }
 
@@ -14,9 +16,14 @@ export default class PollList extends Component {
     this.props.registerListeners();
   }
 
+  componentWillReceiveProps() {
+    this.setState({ loading: false });
+  }
+
   componentWillUnmount() {
     this.props.unregisterListeners();
   }
+
 
   handleAddButtonClick() {
     const { addPoll } = this.props;
@@ -50,14 +57,20 @@ export default class PollList extends Component {
 
     const { polls, removePoll } = this.props;
 
-    return (
-      <div className="row">
-        <div className="col-md-6">
-          <ul className="list-group">
+    const contents = this.state.loading ?
+      <Spinner /> :
+      (
+        <ul className="list-group">
             {
               polls.map( (poll, index) =>  <PollItem key={index} poll={poll} onRemovePoll={removePoll} /> )
             }
          </ul>
+      );
+
+    return (
+      <div className="row">
+        <div className="col-md-6">
+          { contents }
           <div className="input-group">
             <input type="text" className="form-control" placeholder="Pull Title" ref="title" onKeyDown={e => this.handleOnTitleKeyDown(e)} onChange={e => this.handleOnChangeTitle(e)}/>
             <span className="input-group-btn">

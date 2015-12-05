@@ -1,15 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import Spinner from './Spinner';
 
 export default class SelectPoll extends Component {
 
   constructor(props) {
     super(props);
+    this.state = { loading: false };
+  }
+
+  componentWillReceiveProps() {
+    this.setState({ loading: false });
+  }
+
+  componentWillUnmount() {
+    this.props.resetPollSearch();
   }
 
   handleOnChangeTitle() {
     const node = this.refs.title;
     const title =  node.value;
+    this.setState({ loading: true });
     this.props.pollSearch(title);
   }
 
@@ -26,12 +37,14 @@ export default class SelectPoll extends Component {
             </span>
           </div>
           <br/>
-          <ul className="list-group">
-            {
-              polls.map( (poll, index) =>  <li className="list-group-item" key={index}><Link to={`/vote/${poll.id}`}>{poll.title}</Link></li> )
-            }
-         </ul>
-         <h4>{ noResults }</h4>
+          { this.state.loading ? <Spinner /> : (<div>
+            <ul className="list-group">
+              {
+                polls.map( (poll, index) =>  <li className="list-group-item" key={index}><Link to={`/vote/${poll.id}`}>{poll.title}</Link></li> )
+              }
+           </ul>
+           <h4>{ noResults }</h4>
+          </div>)}
         </div>
       </div>
     );
@@ -40,7 +53,8 @@ export default class SelectPoll extends Component {
 
 SelectPoll.propTypes = {
   polls: PropTypes.array,
-  pollSearch: PropTypes.func.isRequired
+  pollSearch: PropTypes.func.isRequired,
+  resetPollSearch: PropTypes.func.isRequired
 };
 
 SelectPoll.defaultProps = {

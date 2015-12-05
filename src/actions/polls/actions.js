@@ -5,7 +5,6 @@ import {
 } from './action-types';
 
 import { createActionConfirmation } from '../confirm';
-
 import Firebase from 'firebase';
 
 export function setPolls(polls) {

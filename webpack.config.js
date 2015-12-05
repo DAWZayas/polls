@@ -19,6 +19,10 @@ module.exports = {
         test: /\.css$/,
         loader: 'style!css!autoprefixer?browsers=last 2 versions'
       },
+      {
+        test: /\.scss$/,
+        loader: 'style!css!autoprefixer?browsers=last 2 versions!sass'
+      },
       { test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=100000'
       }

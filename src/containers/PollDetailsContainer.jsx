@@ -6,15 +6,23 @@ import EntryList from '../components/EntryList';
 
 import { removePoll } from '../actions/polls';
 import * as pollDetailActions from '../actions/pollDetails';
+import Spinner from '../components/Spinner';
 
 class PollDetailsContainer extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      loading: true
+    };
   }
 
   componentWillMount() {
     this.props.registerListeners(this.props.params);
+  }
+
+  componentWillReceiveProps() {
+    this.setState({ loading: false });
   }
 
   componentWillUnmount() {
@@ -26,8 +34,12 @@ class PollDetailsContainer extends Component {
       <div className="row">
         <div className="col-md-6">
           <div className="panel panel-default">
-           <PollDetails { ...this.props } />
-           <EntryList { ...this.props }/>
+           { this.state.loading ? <Spinner /> : (
+            <div>
+              <PollDetails { ...this.props } />
+              <EntryList { ...this.props }/>
+            </div>
+           ) }
           </div>
         </div>
       </div>
