@@ -1,4 +1,3 @@
-import { pushState } from 'redux-router';
 import sequencer from './sequencer';
 
 import * as authActions from './auth';
@@ -8,8 +7,10 @@ export { authActions };
  * action types
  */
 export const SET_POLLS = 'SET_POLLS';
-export const ADD_POLL = 'ADD_POLL';
-export const REMOVE_POLL = 'REMOVE_POLL';
+export const ADD_POLL_SUCCESS = 'ADD_POLL_SUCCESS';
+export const ADD_POLL_ERROR = 'ADD_POLL_ERROR';
+export const REMOVE_POLL_SUCCESS = 'REMOVE_POLL_SUCCESS';
+export const REMOVE_POLL_ERROR = 'REMOVE_POLL_ERROR';
 
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
@@ -38,60 +39,11 @@ export const NotifyLevels = {
  * Poll action creators
  */
 
-export function setPolls(polls) {
-  return { type: SET_POLLS, polls,
-    meta: {
-      notify: { level: NotifyLevels.INFO }
-    }
-  };
-}
-
-export function addPoll(title) {
-  return { type: ADD_POLL, title,
-    meta: {
-      notify: { level: NotifyLevels.INFO }
-    }
-  };
-}
-
-export function removePoll(idPoll, titlePoll) {
-  return { type: REMOVE_POLL, idPoll, redirect: '/',
-    meta: {
-      notify: { level: NotifyLevels.INFO },
-      confirm: {
-        pending: true,
-        msg: `Are you sure you want to remove the "${titlePoll}" poll?`
-      }
-    }
-  };
-}
-
-export function removePollAndNavigate(idPoll, title) {
-  return dispatch => sequencer([
-      () => dispatch(removePoll(idPoll, title)),
-      () => dispatch(pushState(null, '/poll'))
-    ]);
-}
-
-export function editPollTitle(idPoll, title) {
-  return { type: EDIT_POLL_TITLE, idPoll, title,
-    meta: {
-      notify: { level: NotifyLevels.INFO }
-    }
-  };
-}
 
 /*
  * Entry action creators
  */
 
-export function addEntry(idPoll, title) {
-  return { type: ADD_ENTRY, idPoll, title,
-    meta: {
-      notify: { level: NotifyLevels.INFO }
-    }
-  };
-}
 
 export function removeEntry(idEntry) {
   return { type: REMOVE_ENTRY, idEntry,
@@ -151,3 +103,5 @@ export function confirmAction(pendingAction) {
       () => pendingAction.meta.confirm.resolve(pendingAction)
     ]);
 }
+
+

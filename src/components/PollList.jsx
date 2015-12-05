@@ -10,11 +10,19 @@ export default class PollList extends Component {
     };
   }
 
+  componentWillMount() {
+    this.props.registerListeners();
+  }
+
+  componentWillUnmount() {
+    this.props.unregisterListeners();
+  }
+
   handleAddButtonClick() {
-    const { onAddPoll } = this.props;
+    const { addPoll } = this.props;
     const node = this.refs.title;
     const title =  node.value.trim();
-    onAddPoll(title);
+    addPoll(title);
     node.value = '';
     this.setState({
       addDisabled: true
@@ -40,14 +48,14 @@ export default class PollList extends Component {
 
   render() {
 
-    const { polls, onRemovePoll } = this.props;
+    const { polls, removePoll } = this.props;
 
     return (
       <div className="row">
         <div className="col-md-6">
           <ul className="list-group">
             {
-              polls.map( (poll, index) =>  <PollItem key={index} poll={poll} onRemovePoll={onRemovePoll} /> )
+              polls.map( (poll, index) =>  <PollItem key={index} poll={poll} onRemovePoll={removePoll} /> )
             }
          </ul>
           <div className="input-group">
@@ -64,8 +72,10 @@ export default class PollList extends Component {
 
 PollList.propTypes = {
   polls: PropTypes.array,
-  onAddPoll: PropTypes.func.isRequired,
-  onRemovePoll: PropTypes.func.isRequired
+  addPoll: PropTypes.func.isRequired,
+  removePoll: PropTypes.func.isRequired,
+  registerListeners: PropTypes.func.isRequired,
+  unregisterListeners: PropTypes.func.isRequired
 };
 
 PollList.defaultProps = {

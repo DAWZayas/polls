@@ -1,15 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import PollDetails from '../components/PollDetails';
 import EntryList from '../components/EntryList';
 
-import { addEntry, removeEntry, removePollAndNavigate, editPollTitle } from '../actions';
+import * as pollDetailActions from '../actions/pollDetails';
 
 class PollDetailsContainer extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    this.props.registerListeners(this.props.params);
+  }
+
+  componentWillUnmount() {
+    this.props.unregisterListeners(this.props.params);
   }
 
   render() {
@@ -26,23 +34,13 @@ class PollDetailsContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const idPoll = state.router.params.idPoll;
-  const poll = state.polls.filter( poll => idPoll === poll.id)[0] || {};
-  const entries = Object.values(state.entries).filter( entry =>  entry.idPoll === poll.id );
-  return { poll, entries };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    onAddEntryClick: (idPoll, title) => dispatch(addEntry(idPoll, title)),
-    onRemoveEntryClick: (idEntry) => dispatch(removeEntry(idEntry)),
-    onRemovePollClick: (idPoll, title) => dispatch(removePollAndNavigate(idPoll, title)),
-    onEditPollTitleClick: (idPoll, newTitle) => dispatch(editPollTitle(idPoll, newTitle))
-  };
-}
+PollDetailsContainer.propTypes = {
+  params: PropTypes.object.isRequired,
+  registerListeners: PropTypes.func.isRequired,
+  unregisterListeners: PropTypes.func.isRequired
+};
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  state => ({poll: state.pollDetails}),
+  pollDetailActions
 )(PollDetailsContainer);

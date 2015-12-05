@@ -5,23 +5,17 @@ export default class SelectPoll extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { filter: '' };
   }
 
   handleOnChangeTitle() {
     const node = this.refs.title;
     const title =  node.value;
-    this.setState({ filter: title});
-  }
-
-  filterPolls(polls, filter) {
-    return !filter || filter.length < 3 ? [] : polls.filter( poll => new RegExp(filter, 'i').test(poll.title) );
+    this.props.pollSearch(title);
   }
 
   render() {
     const { polls } = this.props;
-    const filterredPolls = this.filterPolls(polls, this.state.filter);
-    const noResults = this.state.filter.length >= 3 && filterredPolls.length === 0 ? 'No results' : null;
+    const noResults = polls.length === 0 ? 'No results' : null;
     return (
       <div className="row">
         <div className="col-md-6">
@@ -34,7 +28,7 @@ export default class SelectPoll extends Component {
           <br/>
           <ul className="list-group">
             {
-              filterredPolls.map( (poll, index) =>  <li className="list-group-item" key={index}><Link to={`/vote/${poll.id}`}>{poll.title}</Link></li> )
+              polls.map( (poll, index) =>  <li className="list-group-item" key={index}><Link to={`/vote/${poll.id}`}>{poll.title}</Link></li> )
             }
          </ul>
          <h4>{ noResults }</h4>
@@ -45,7 +39,8 @@ export default class SelectPoll extends Component {
 }
 
 SelectPoll.propTypes = {
-  polls: PropTypes.array
+  polls: PropTypes.array,
+  pollSearch: PropTypes.func.isRequired
 };
 
 SelectPoll.defaultProps = {

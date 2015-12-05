@@ -1,0 +1,1 @@
+export const SET_POLL_SEARCH = 'SET_POLL_SEARCH';

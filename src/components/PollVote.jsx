@@ -13,12 +13,20 @@ export default class PollVote extends Component {
     super(props);
   }
 
-  handleVoteClick(idEntry) {
-    this.props.onVoteEntryClick(idEntry);
+  componentWillMount() {
+    this.props.registerListeners(this.props.params);
+  }
+
+  componentWillUnmount() {
+    this.props.unregisterListeners(this.props.params);
+  }
+
+  handleVoteClick(idPoll, idEntry) {
+    this.props.voteEntry(idPoll, idEntry);
   }
 
   totalVotes(entries) {
-    return entries.reduce( (total, entry) => total + entry.votes, 0 );
+    return Object.keys(entries).reduce( (total, id) => total + entries[id].votes, 0 );
   }
 
   createProgressBar(entry, totalVotes, index) {
@@ -32,7 +40,8 @@ export default class PollVote extends Component {
   }
 
   render() {
-    const { poll, entries } = this.props;
+    const { poll } = this.props;
+    const entries = poll.entries || {};
     const total = this.totalVotes(entries);
     return (
       <div className="panel-heading">
@@ -46,12 +55,12 @@ export default class PollVote extends Component {
             <h4>Entries</h4>
             <ul className="list-group">
               {
-                entries.map( (entry, index) =>
+                Object.keys(entries).map( (id, index) =>
                   <li className="list-group-item" key={index}>
-                    { entry.title }
-                    <span onClick={ () => this.handleVoteClick(entry.id) } className="action-element glyphicon glyphicon-arrow-up"/>
+                    { entries[id].title }
+                    <span onClick={ () => this.handleVoteClick(poll.id, id) } className="action-element glyphicon glyphicon-arrow-up"/>
                     <br/>
-                    { this.createProgressBar(entry, total, index) }
+                    { this.createProgressBar(entries[id], total, index) }
                   </li>
                 )
               }
@@ -65,6 +74,8 @@ export default class PollVote extends Component {
 
 PollVote.propTypes = {
   poll: PropTypes.object.isRequired,
-  entries: PropTypes.array,
-  onVoteEntryClick: PropTypes.func.isRequired
+  voteEntry: PropTypes.func.isRequired,
+  params: PropTypes.object.isRequired,
+  registerListeners: PropTypes.func.isRequired,
+  unregisterListeners: PropTypes.func.isRequired
  };

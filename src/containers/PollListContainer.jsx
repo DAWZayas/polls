@@ -1,22 +1,9 @@
 import { connect } from 'react-redux';
 
 import PollList from '../components/PollList';
-import { addPoll, removePoll } from '../actions';
-
-function mapStateToProps(state) {
-  return {
-    polls: state.polls
-  };
-}
-
-function mapActionsToProps(dispatch) {
-  return {
-    onAddPoll: title => dispatch(addPoll(title)),
-    onRemovePoll: (idPoll, title) => dispatch(removePoll(idPoll, title))
-  };
-}
+import * as pollsActions from '../actions/polls';
 
 export default connect(
-  mapStateToProps,
-  mapActionsToProps
+  state => ({polls: state.polls}),
+  pollsActions
 )(PollList);

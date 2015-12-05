@@ -1,12 +1,12 @@
-import { SET_POLLS } from '../actions/polls';
+import { SET_POLL_SEARCH } from '../actions/pollSearch';
 
 function setPolls(state, polls) {
   return polls.slice();
 }
 
-export default function pollReducer(state = [], action) {
+export default function pollSeachReducer(state = [], action) {
   switch (action.type) {
-    case SET_POLLS:
+    case SET_POLL_SEARCH:
       return setPolls(state, action.polls);
     default:
       return state;

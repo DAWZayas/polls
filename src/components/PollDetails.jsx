@@ -10,7 +10,7 @@ export default class PollDetails extends Component {
   }
 
   handleRemoveButtonClick(idPoll, titlePoll) {
-    this.props.onRemovePollClick(idPoll, titlePoll);
+    this.props.removePollAndNavigate(idPoll, titlePoll);
   }
 
   handleEditClick() {
@@ -34,13 +34,13 @@ export default class PollDetails extends Component {
 
   handleOkClick() {
     const node = this.refs.title;
-    const { poll, onEditPollTitleClick } = this.props;
+    const { poll, editPollTitle } = this.props;
 
     this.setState({
       editing: false
     });
 
-    onEditPollTitleClick(poll.id, node.value.trim());
+    editPollTitle(poll.id, node.value.trim());
   }
 
   render() {
@@ -68,6 +68,6 @@ export default class PollDetails extends Component {
 
 PollDetails.propTypes = {
   poll: PropTypes.object.isRequired,
-  onRemovePollClick: PropTypes.func.isRequired,
-  onEditPollTitleClick: PropTypes.func.isRequired
+  removePollAndNavigate: PropTypes.func.isRequired,
+  editPollTitle: PropTypes.func.isRequired
  };
