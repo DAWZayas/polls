@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { cancelAction, confirmAction } from '../actions';
+import { cancelAction, confirmAction } from '../actions/confirm';
 
 import ConfirmDialog from '../components/ConfirmDialog';
 
@@ -9,8 +9,7 @@ function mapStateToProps(state) {
     { isOpen: false } :
     {
       isOpen: true,
-      action: action,
-      msg: action.meta.confirm.msg
+      action
     };
 }
 

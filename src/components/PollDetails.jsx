@@ -10,7 +10,7 @@ export default class PollDetails extends Component {
   }
 
   handleRemoveButtonClick(idPoll, titlePoll) {
-    this.props.removePollAndNavigate(idPoll, titlePoll);
+    this.props.removePoll(idPoll, titlePoll);
   }
 
   handleEditClick() {
@@ -68,6 +68,6 @@ export default class PollDetails extends Component {
 
 PollDetails.propTypes = {
   poll: PropTypes.object.isRequired,
-  removePollAndNavigate: PropTypes.func.isRequired,
+  removePoll: PropTypes.func.isRequired,
   editPollTitle: PropTypes.func.isRequired
  };

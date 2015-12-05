@@ -3,3 +3,4 @@ dist/bundle.js
 dist/*.svg
 npm-debug.log
 build
+firebase-debug.log

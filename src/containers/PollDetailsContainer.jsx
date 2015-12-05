@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PollDetails from '../components/PollDetails';
 import EntryList from '../components/EntryList';
 
+import { removePoll } from '../actions/polls';
 import * as pollDetailActions from '../actions/pollDetails';
 
 class PollDetailsContainer extends Component {
@@ -42,5 +43,5 @@ PollDetailsContainer.propTypes = {
 
 export default connect(
   state => ({poll: state.pollDetails}),
-  pollDetailActions
+  Object.assign( {}, pollDetailActions, { removePoll } )
 )(PollDetailsContainer);

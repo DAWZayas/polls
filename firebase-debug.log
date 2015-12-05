@@ -1,8 +1,0 @@
-[debug] ----------------------------------------------------------------------
-[debug] Command:      /usr/bin/nodejs /home/javierperez/projects/polls/node_modules/.bin/firebase deploy
-[debug] Platform:     linux
-[debug] Node Version: v4.2.2
-[debug] Time:         Sat Dec 05 2015 13:56:47 GMT+0100 (CET)
-[debug] ----------------------------------------------------------------------
-[debug] 
-[debug] >>> HTTP REQUEST GET https://admin.firebase.com/firebase/redux-polls/token?token=XXX 

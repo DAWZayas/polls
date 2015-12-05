@@ -1,5 +1,9 @@
-import uuid from 'node-uuid';
-
-export function getId() {
-  return uuid.v1();
+{
+    "rules": {
+        ".read": true,
+        ".write": true,
+        "polls": {
+          ".indexOn": ["title", "createdAt"]
+        }
+    }
 }

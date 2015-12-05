@@ -2,18 +2,6 @@ import {
   UPDATE_POLL_ERROR
 } from './action-types';
 
-
-import { pushState } from 'redux-router';
-import sequencer from '../sequencer';
-import { removePoll } from '../polls';
-
-export function removePollAndNavigate(idPoll, title) {
-  return dispatch => sequencer([
-      () => dispatch(removePoll(idPoll, title)),
-      () => dispatch(pushState(null, '/poll'))
-    ]);
-}
-
 export function editPollTitle(idPoll, title) {
   return (dispatch, getState) => {
     const { firebase } = getState();

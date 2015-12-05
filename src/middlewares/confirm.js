@@ -1,6 +1,7 @@
 import { createActionConfirmation } from '../actions';
 
 const confirm = store => next => action => {
+  debugger;
   if (!action.meta || !action.meta.confirm || !action.meta.confirm.pending) {
     return next(action);
   }

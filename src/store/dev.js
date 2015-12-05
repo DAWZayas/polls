@@ -3,7 +3,6 @@ import { reduxReactRouter } from 'redux-router';
 import createHistory from 'history/lib/createBrowserHistory';
 import reducer from '../reducers';
 import thunk from 'redux-thunk';
-import confirm from '../middlewares/confirm';
 import DevTools from '../containers/DevTools';
 import createLogger from 'redux-logger';
 import { FIREBASE_URL } from '../config';
@@ -11,7 +10,7 @@ import Firebase from 'firebase';
 import { authActions } from '../actions';
 
 const createStoreWithMiddleware = compose(
-  applyMiddleware(thunk, confirm),
+  applyMiddleware(thunk),
   reduxReactRouter({ createHistory }),
   applyMiddleware(createLogger()),
   DevTools.instrument()
