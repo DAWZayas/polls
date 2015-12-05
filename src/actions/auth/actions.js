@@ -1,10 +1,11 @@
-export const INIT_AUTH = 'INIT_AUTH';
-export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
-export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
+import { pushState } from 'redux-router';
+import { INIT_AUTH, SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS } from './action-types.js';
 
 function authenticate(provider) {
   return (dispatch, getState) => {
     const { firebase } = getState();
+
+    dispatch(pushState(null, '/'));
 
     firebase.authWithOAuthPopup(provider, (error, authData) => {
       if (error) {
@@ -23,7 +24,6 @@ function authenticate(provider) {
   };
 }
 
-
 export function initAuth() {
   return (dispatch, getState) => {
     const { firebase } = getState();
@@ -37,28 +37,24 @@ export function initAuth() {
   };
 }
 
-
 export function signInWithGithub() {
   return authenticate('github');
 }
-
-
-export function signInWithGoogle() {
-  return authenticate('google');
-}
-
-
-export function signInWithTwitter() {
-  return authenticate('twitter');
-}
-
 
 export function signOut() {
   return (dispatch, getState) => {
     const { firebase } = getState();
     firebase.unauth();
+    dispatch(pushState(null, '/'));
     dispatch({
       type: SIGN_OUT_SUCCESS
     });
+  };
+}
+
+
+export function cancelSignIn() {
+  return dispatch => {
+    return dispatch(pushState(null, '/'));
   };
 }

@@ -7,7 +7,7 @@ import DevTools from '../containers/DevTools';
 import createLogger from 'redux-logger';
 import { FIREBASE_URL } from '../config';
 import Firebase from 'firebase';
-import { authActions } from '../actions';
+import { initAuth } from '../actions/auth';
 
 const createStoreWithMiddleware = compose(
   applyMiddleware(thunk),
@@ -22,7 +22,7 @@ export default function configureStore(initialState) {
     initialState || { firebase: new Firebase(FIREBASE_URL) }
   );
 
-  store.dispatch(authActions.initAuth());
+  store.dispatch(initAuth());
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

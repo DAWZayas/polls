@@ -1,4 +1,4 @@
-import { authActions } from '../actions';
+import * as authActions from '../actions/auth';
 
 export const initialState = {
   authenticated: false,
