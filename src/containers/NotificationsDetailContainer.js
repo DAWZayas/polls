@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { removeNotification, removeAllNotifications, setNotificationAsReaded } from '../actions';
+import { removeNotification, removeAllNotifications, setNotificationAsReaded } from '../actions/notify';
 
 import NotificationsDetail from '../components/NotificationsDetail';
 

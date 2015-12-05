@@ -6,6 +6,8 @@ import {
 
 import { createActionConfirmation } from '../confirm';
 
+import Firebase from 'firebase';
+
 export function setPolls(polls) {
   return { type: SET_POLLS, polls };
 }
@@ -14,7 +16,7 @@ export function addPoll(title) {
   return (dispatch, getState) => {
     const { firebase } = getState();
     firebase.child('polls')
-      .push({title}, error => {
+      .push({ title, createdAt: Firebase.ServerValue.TIMESTAMP }, error => {
         if (error) {
           console.error('ERROR @ addPoll :', error); // eslint-disable-line no-console
           dispatch({

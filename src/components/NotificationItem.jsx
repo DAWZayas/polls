@@ -21,7 +21,7 @@ export default class NotificationItem extends Component {
     return (
       <div className={className} role="alert">
         <button type="button" className="close" onClick={ () => this.handleRemoveButtonClick(index)}><span>&times;</span></button>
-        <strong>Info:</strong> {message.text} Created: {message.created.toUTCString()}
+        <strong>Info:</strong> {message.text} at: {message.created.toLocaleString()}
       </div>
     );
   }

@@ -1,3 +1,4 @@
+import Firebase from 'firebase';
 import {
   UPDATE_POLL_ERROR
 } from './action-types';
@@ -22,7 +23,7 @@ export function addEntry(idPoll, title) {
   return (dispatch, getState) => {
     const { firebase } = getState();
     firebase.child(`polls/${idPoll}/entries`)
-      .push({ title, votes: 0 }, error => {
+      .push({ title, votes: 0, createdAt: Firebase.ServerValue.TIMESTAMP }, error => {
         if (error) {
           console.error('ERROR @ updatePoll :', error); // eslint-disable-line no-console
           dispatch({
