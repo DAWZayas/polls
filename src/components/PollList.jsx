@@ -16,7 +16,13 @@ export default class PollList extends Component {
     this.props.registerListeners();
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
+    const { history } = this.props;
+
+    if (!nextProps.auth.authenticated) {
+      history.replaceState(null, '/');
+    }
+
     this.setState({ loading: false });
   }
 
@@ -88,7 +94,8 @@ PollList.propTypes = {
   addPoll: PropTypes.func.isRequired,
   removePoll: PropTypes.func.isRequired,
   registerListeners: PropTypes.func.isRequired,
-  unregisterListeners: PropTypes.func.isRequired
+  unregisterListeners: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 PollList.defaultProps = {

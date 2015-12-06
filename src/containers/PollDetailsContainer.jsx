@@ -21,7 +21,13 @@ class PollDetailsContainer extends Component {
     this.props.registerListeners(this.props.params);
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
+    const { history } = this.props;
+
+    if (!nextProps.auth.authenticated) {
+      history.replaceState(null, '/');
+    }
+
     this.setState({ loading: false });
   }
 
@@ -50,10 +56,11 @@ class PollDetailsContainer extends Component {
 PollDetailsContainer.propTypes = {
   params: PropTypes.object.isRequired,
   registerListeners: PropTypes.func.isRequired,
-  unregisterListeners: PropTypes.func.isRequired
+  unregisterListeners: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default connect(
-  state => ({poll: state.pollDetails}),
+  state => ({ poll: state.pollDetails, auth: state.auth }),
   Object.assign( {}, pollDetailActions, { removePoll } )
 )(PollDetailsContainer);
