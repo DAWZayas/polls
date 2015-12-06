@@ -5,6 +5,7 @@ import reducer from '../reducers';
 import thunk from 'redux-thunk';
 import { FIREBASE_URL } from '../config';
 import Firebase from 'firebase';
+import { initAuth } from '../actions/auth';
 
 const createStoreWithMiddleware = compose(
   applyMiddleware(thunk),

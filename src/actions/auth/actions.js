@@ -41,6 +41,10 @@ export function signInWithGithub() {
   return authenticate('github');
 }
 
+export function signInWithTwitter() {
+  return authenticate('twitter');
+}
+
 export function signOut() {
   return (dispatch, getState) => {
     const { firebase } = getState();
