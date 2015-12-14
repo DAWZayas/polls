@@ -1,7 +1,7 @@
 
 # Demo
 
-<a href="https://redux-polls.firebaseapp.com" target="redux-polls">got to app</a>
+<a href="http://mobiletest.me/htc_one_emulator/?u=https://redux-polls.firebaseapp.com/" target="redux-polls">got to app</a>
 
 # To install
 ```bash
