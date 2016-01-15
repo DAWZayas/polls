@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "token": "node token-generator",
+    "start:firebase": "node src/firebase-server.js",
     "start": "node_modules/.bin/webpack-dev-server",
     "test": "npm run lint ; mocha --compilers js:babel-core/register --require ./test/react/test_helper.js 'test/testSeq.js'",
     "test:watch": "npm run test -- --watch",
@@ -33,6 +35,8 @@
     "eslint-loader": "^1.1.0",
     "eslint-plugin-react": "^3.6.3",
     "file-loader": "^0.8.4",
+    "firebase-server": "^0.5.2",
+    "firebase-token-generator": "^2.0.0",
     "firebase-tools": "^2.1.0",
     "jsdom": "^7.0.2",
     "mocha": "^2.3.3",
@@ -46,8 +50,8 @@
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.12.1"
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "babel-runtime": "^5.8.29",

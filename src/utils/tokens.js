@@ -1,0 +1,4 @@
+export const tokens = {
+  homer: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2IjowLCJkIjp7InVpZCI6ImhvbWVyIiwicHJvdmlkZXIiOiJjdXN0b20ifSwiaWF0IjoxNDUzNzE3MzY0fQ.WSr8anQh1L1_iR9-ZHrrbC4Jk-bG4v7wpakinfZ7fCE',
+  bart: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2IjowLCJkIjp7InVpZCI6ImJhcnQiLCJwcm92aWRlciI6ImN1c3RvbSJ9LCJpYXQiOjE0NTM3MTczOTd9.UP-KEkmXoJNf5aLS1-EQZYT6NXkVVAdw-cvGkG_42V4'
+};

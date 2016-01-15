@@ -1,43 +1,31 @@
-
-# Demo
-
-<a href="http://mobiletest.me/htc_one_emulator/?u=https://redux-polls.firebaseapp.com/" target="redux-polls">got to app</a>
-
-# To install
-```bash
-	npm install
-```
-
-# To lint
-```bash
-	npm run lint
-```
-
-# To test
+# To install 
 
 ```bash
-	npm test
+	npm start
 ```
 
-or
+# To deploy local
+
+Add '127.0.0.1 test.firebaseio.com' to '/etc/hosts'
+
+Execute in a terminal:
 
 ```bash
-	npm run test:watch
+	npm run start:firebase
 ```
 
-# To dev start
+In other terminal execute:
+
 ```bash
 	npm start
 ```
 
 And goto [http://localhost:8080](http://localhost:8080)
 
-# To dist
+# To create new token
+
 ```bash
-	npm run dist
+	SECRET=<secret> USER=<user> npm run token
 ```
 
-# To deploy to Firebase
-```bash
-	npm run deploy
-```
+And add to './src/utils/tokens.js'
