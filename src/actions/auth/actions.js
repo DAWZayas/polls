@@ -1,13 +1,14 @@
 import { pushState } from 'redux-router';
 import { INIT_AUTH, SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS } from './action-types.js';
+import { tokens } from '../../utils/tokens';
 
-function authenticate(provider) {
+function authenticate(user) {
   return (dispatch, getState) => {
     const { firebase } = getState();
 
     dispatch(pushState(null, '/'));
 
-    firebase.authWithOAuthPopup(provider, (error, authData) => {
+    firebase.authWithCustomToken(tokens[user], (error, authData) => {
       if (error) {
         console.error('ERROR @ authWithOAuthPopup :', error); // eslint-disable-line no-console
       }
@@ -37,12 +38,12 @@ export function initAuth() {
   };
 }
 
-export function signInWithGithub() {
-  return authenticate('github');
+export function signInWithHomer() {
+  return authenticate('homer');
 }
 
-export function signInWithTwitter() {
-  return authenticate('twitter');
+export function signInWithBart() {
+  return authenticate('bart');
 }
 
 export function signOut() {
