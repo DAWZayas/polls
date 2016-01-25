@@ -1,12 +1,10 @@
 # To install 
 
 ```bash
-	npm start
+	npm install
 ```
 
 # To deploy local
-
-Add '127.0.0.1 test.firebaseio.com' to '/etc/hosts'
 
 Execute in a terminal:
 
