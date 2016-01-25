@@ -34,8 +34,9 @@ export function registerListeners() {
 
 export function unregisterListeners() {
   return (dispatch, getState) => {
-    const { firebase } = getState();
-    const ref = firebase.child('polls');
+    const { firebase, auth } = getState();
+    const userId = auth.id;
+    const ref = firebase.child(`myPolls/${userId}`);
     ref.off();
     dispatch({
       type: SET_POLLS,
