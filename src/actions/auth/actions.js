@@ -2,7 +2,7 @@ import { pushState } from 'redux-router';
 import { INIT_AUTH, SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS } from './action-types.js';
 import { tokens } from '../../utils/tokens';
 
-function authenticate(user) {
+export function authenticate(user) {
   return (dispatch, getState) => {
     const { firebase } = getState();
 
@@ -10,7 +10,6 @@ function authenticate(user) {
 
     firebase.authWithCustomToken(tokens[user], (error, authData) => {
       if (error) {
-        debugger;
         console.error('ERROR @ authWithCustomToken :', error); // eslint-disable-line no-console
       }
       else {
@@ -37,14 +36,6 @@ export function initAuth() {
       }
     });
   };
-}
-
-export function signInWithHomer() {
-  return authenticate('homer');
-}
-
-export function signInWithBart() {
-  return authenticate('bart');
 }
 
 export function signOut() {

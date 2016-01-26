@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Modal, ModalClose } from 'react-modal-bootstrap';
+import { tokens } from '../utils/tokens';
 
 export default class SignIn extends Component {
 
@@ -13,12 +14,8 @@ export default class SignIn extends Component {
     this.props.cancelSignIn();
   }
 
-  handlesignInWithHomerClick() {
-    this.props.signInWithHomer();
-  }
-
-  handlesignInWithBartClick() {
-    this.props.signInWithBart();
+  handleSignIn(user) {
+    this.props.authenticate(user);
   }
 
   render() {
@@ -30,8 +27,7 @@ export default class SignIn extends Component {
           <h4 className="modal-title">Sign in Dialog</h4>
         </div>
         <div className="modal-body">
-          <button className="btn" type="button" onClick={ () => this.handlesignInWithHomerClick()}>Homer</button>
-          <button className="btn" type="button" onClick={ () => this.handlesignInWithBartClick()}>Bart</button>
+          { Object.keys(tokens).map( user => <button key={ user } className="btn" type="button" onClick={ () => this.handleSignIn(user)}>{ user }</button> ) }
         </div>
       </Modal>
     );
@@ -41,6 +37,5 @@ export default class SignIn extends Component {
 
 SignIn.propTypes = {
   cancelSignIn: PropTypes.func.isRequired,
-  signInWithHomer: PropTypes.func.isRequired,
-  signInWithBart: PropTypes.func.isRequired
+  authenticate: PropTypes.func.isRequired
 };

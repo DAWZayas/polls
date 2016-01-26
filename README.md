@@ -26,4 +26,11 @@ And goto [http://localhost:8080](http://localhost:8080)
 	SECRET=<secret> USER=<user> npm run token
 ```
 
-And add to './src/utils/tokens.js'
+Example
+
+```bash
+    SECRET=sRhN4rw1LfRCN8BXS5zCNpo3odJAWhTvLXXT8edk USER=bart npm run token
+```
+
+
+And add the shown token to './src/utils/tokens.js'

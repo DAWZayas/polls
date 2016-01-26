@@ -49,7 +49,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('development'),
-        'FIREBASE_URL': JSON.stringify('ws://test.firebaseio.com:5000')
+        'FIREBASE_URL': JSON.stringify('ws://127.0.1:5000')
       }
     })
   ]
