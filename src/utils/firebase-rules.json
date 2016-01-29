@@ -5,11 +5,11 @@
         "polls": {
           ".indexOn": ["title", "createdAt"],
           ".read": true,
-          ".write": "auth != null",
           "$poll_id": {
             "title": {
               ".validate": "newData.isString() && newData.val().length >= 3 && newData.val().length <25"
-            }
+            },
+            ".write": "root.child('myPolls/' + auth.uid + '/' + $poll_id).exists()"
           }
         },
         "myPolls": {
@@ -17,7 +17,7 @@
             ".write": "$user_id === auth.uid",
             ".read": "$user_id === auth.uid",
             "$poll_id": {
-              ".validate": "root.child('polls/' + $poll_id).exists()"
+              ".validate": "auth !== null"
             }
           }
         }

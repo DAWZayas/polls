@@ -6,6 +6,7 @@ import {
 
 import { createActionConfirmation } from '../confirm';
 import Firebase from 'firebase';
+import { getId } from '../../utils';
 
 export function setPolls(polls) {
   return { type: SET_POLLS, polls };
@@ -14,8 +15,10 @@ export function setPolls(polls) {
 export function addPoll(title) {
   return (dispatch, getState) => {
     const { firebase, auth } = getState();
-    const newPollRef = firebase.child('polls')
-      .push({ title, createdAt: Firebase.ServerValue.TIMESTAMP }, error => {
+    const userId = auth.id;
+    const pollId = getId();
+    firebase.child(`myPolls/${userId}/${pollId}`)
+      .set({createdAt: Firebase.ServerValue.TIMESTAMP }, error => {
         if (error) {
           console.error('ERROR @ addPoll :', error); // eslint-disable-line no-console
           dispatch({
@@ -23,9 +26,7 @@ export function addPoll(title) {
             payload: error,
         });
       } else {
-        const pollId = newPollRef.key();
-        const userId = auth.id;
-        firebase.child(`myPolls/${userId}/${pollId}`).set({ createdAt: Firebase.ServerValue.TIMESTAMP });
+        firebase.child('polls').update( { [pollId] : { title, createdAt: Firebase.ServerValue.TIMESTAMP } });
       }
     });
   };
