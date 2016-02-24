@@ -1,0 +1,3 @@
+export const SET_SETTINGS = 'SET_SETTINGS';
+export const SAVING_SETTINGS = 'SAVING_SETTINGS';
+export const SAVED_SETTINGS = 'SAVED_SETTINGS';

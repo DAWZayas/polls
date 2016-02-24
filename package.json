@@ -1,0 +1,73 @@
+{
+  "name": "polls",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "token": "node token-generator",
+    "start:firebase": "node src/firebase-server.js",
+    "start": "node_modules/.bin/webpack-dev-server",
+    "test": "npm run lint ; mocha --compilers js:babel-core/register --require ./test/react/test_helper.js 'test/testSeq.js'",
+    "test:watch": "npm run test -- --watch",
+    "lint": "./node_modules/.bin/eslint --ext=jsx --ext=js src/ test/",
+    "dist": "rm -rf dist/bundle.js dist/*.svg && ./node_modules/.bin/webpack --config webpack.production.config.js",
+    "deploy": "npm run dist -- && node_modules/.bin/firebase login && node_modules/.bin/firebase deploy && node_modules/.bin/firebase open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surtich/polls.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/surtich/polls/issues"
+  },
+  "homepage": "https://github.com/surtich/polls#readme",
+  "devDependencies": {
+    "autoprefixer-loader": "^3.1.0",
+    "babel": "^5.8.29",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^5.3.2",
+    "chai": "^3.4.0",
+    "css-loader": "^0.21.0",
+    "eslint": "^1.7.3",
+    "eslint-friendly-formatter": "^1.2.2",
+    "eslint-loader": "^1.1.0",
+    "eslint-plugin-react": "^3.6.3",
+    "file-loader": "^0.8.4",
+    "firebase-server": "^0.5.2",
+    "firebase-token-generator": "^2.0.0",
+    "firebase-tools": "^2.1.0",
+    "jsdom": "^7.0.2",
+    "mocha": "^2.3.3",
+    "node-sass": "^3.4.2",
+    "react-addons-test-utils": "^0.14.0",
+    "react-hot-loader": "^1.3.0",
+    "redux-devtools": "^3.0.0-beta-3",
+    "redux-devtools-dock-monitor": "^1.0.0-beta-3",
+    "redux-devtools-log-monitor": "^1.0.0-beta-3",
+    "redux-logger": "^2.0.4",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "babel-runtime": "^5.8.29",
+    "bootstrap": "^3.3.5",
+    "firebase": "^2.3.2",
+    "history": "^1.17.x",
+    "immutable": "^3.7.5",
+    "jquery": "^2.1.4",
+    "node-uuid": "^1.4.3",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-modal-bootstrap": "^0.5.0",
+    "react-redux": "^4.0.0",
+    "react-router": "^1.0.2",
+    "redux": "^3.0.4",
+    "redux-router": "^1.0.0-beta3",
+    "redux-thunk": "^1.0.0"
+  }
+}

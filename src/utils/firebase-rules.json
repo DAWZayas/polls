@@ -1,0 +1,25 @@
+{
+    "rules": {
+        ".read": false,
+        ".write": false,
+        "polls": {
+          ".indexOn": ["title", "createdAt"],
+          ".read": true,
+          ".write": "auth != null",
+          "$poll_id": {
+            "title": {
+              ".validate": "newData.isString() && newData.val().length >= 3 && newData.val().length <25"
+            }
+          }
+        },
+        "myPolls": {
+          "$user_id": {
+            ".write": "$user_id === auth.uid",
+            ".read": "$user_id === auth.uid",
+            "$poll_id": {
+              ".validate": "root.child('polls/' + $poll_id).exists()"
+            }
+          }
+        }
+    }
+}
