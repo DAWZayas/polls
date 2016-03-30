@@ -1,0 +1,79 @@
+{
+  "users": {
+    "homer": {
+      "name": "Homer Simpson",
+      "picture": "/img/homer.png"
+    },
+    "bart": {
+      "name": "Bart Simpson",
+      "picture": "/img/bart.png"
+     },
+     "lisa": {
+      "name": "Lisa Simpson"
+     }
+  },
+  "myPolls" : {
+    "homer" : {
+      "-K4mB6io8er7LNHtRRLZ" : { "state": "locked" },
+      "-K4mB9gnUjzxp2mxShwk" : { "state": "locked" }
+    }
+  },
+  "polls" : {
+    "-K4mB6io8er7LNHtRRLZ" : {
+      "state": "locked",
+      "entries" : {
+        "-K4mBTT91Rl_uEpItTSK" : {
+          "title" : "PP",
+          "votes" : 10
+        },
+        "-K4mBXwo8btk5bjavvpu" : {
+          "title" : "C's",
+          "votes" : 15
+        },
+        "-K4mBaHLtvDVrehWp80u" : {
+          "title" : "PSOE",
+          "votes" : 12
+        },
+        "-K4mBbTBpn1Td9Myz9-Q" : {
+          "title" : "Podemos",
+          "votes" : 6
+        }
+      },
+      "title" : "Spanish Political Parties"
+    },
+    "-K4mB9gnUjzxp2mxShwk" : {
+      "state": "locked",
+      "entries" : {
+        "-K4mBEHXp3A6UWKvPDH_" : {
+          "title" : "Java",
+          "votes" : 3
+        },
+        "-K4mBFm7xfaXEj9SS9xw" : {
+          "title" : "JavaScript",
+          "votes" : 4
+        },
+        "-K4mBGp_9D9Ok0y8Tnju" : {
+          "title" : "PHP",
+          "votes" : 3
+        },
+        "-K4mBJO8HJYyuAKo4u1s" : {
+          "title" : "C#",
+          "votes" : 5
+        },
+        "-K4mBMazdvZjAuU3sEWj" : {
+          "title" : "Python",
+          "votes" : 0
+        },
+        "-K4mBOSh8TsW7eebqSIW" : {
+          "title" : "Ruby",
+          "votes" : 0
+        },
+        "-K4mBQkGMzoqmHa56soj" : {
+          "title" : "Haskell",
+          "votes" : 0
+        }
+      },
+      "title" : "Programming Languages"
+    }
+  }
+}
