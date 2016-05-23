@@ -1,0 +1,2 @@
+export const SET_POLL_SEARCH = 'SET_POLL_SEARCH';
+export const RESET_POLL_SEARCH = 'RESET_POLL_SEARCH';
